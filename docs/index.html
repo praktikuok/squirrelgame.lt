@@ -7,77 +7,7 @@
   <title>Squirrel Game – Miesto galvosūkių žaidimas Vilniuje</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    :root {
-      --color-primary: #0E3B43;
-      --color-secondary: #9EE493;
-      --color-accent: #F4A259;
-      --color-neutral: #DAF7DC;
-      --color-dark-green: #357266;
-    }
-
-    body {
-      box-sizing: border-box;
-    }
-
-    .bg-primary {
-      background-color: var(--color-primary);
-    }
-
-    .bg-secondary {
-      background-color: var(--color-secondary);
-    }
-
-    .bg-accent {
-      background-color: var(--color-accent);
-    }
-
-    .bg-neutral {
-      background-color: var(--color-neutral);
-    }
-
-    .bg-dark-green {
-      background-color: var(--color-dark-green);
-    }
-
-    .text-primary {
-      color: var(--color-primary);
-    }
-
-    .text-secondary {
-      color: var(--color-secondary);
-    }
-
-    .text-accent {
-      color: var(--color-accent);
-    }
-
-    .text-neutral {
-      color: var(--color-neutral);
-    }
-
-    .text-dark-green {
-      color: var(--color-dark-green);
-    }
-
-    .border-primary {
-      border-color: var(--color-primary);
-    }
-
-    .border-secondary {
-      border-color: var(--color-secondary);
-    }
-
-    .border-accent {
-      border-color: var(--color-accent);
-    }
-
-    html,
-    body {
-      height: 100%;
-      width: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body class="bg-white text-gray-800">
@@ -124,19 +54,25 @@
       <div class="max-w-6xl mx-auto">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Apie žaidimą</h2>
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded-lg shadow-md text-center">
-            <i class="fas fa-map-marked-alt text-accent text-5xl mb-4"></i>
+          <div class="feature-card text-center">
+            <div class="feature-card-icon">
+              <i class="fas fa-map-marked-alt text-2xl"></i>
+            </div>
             <h3 class="text-xl font-semibold text-primary mb-3">Tyrinėk miestą</h3>
             <p class="text-gray-700">Vaikščiok Vilniaus gatvėmis, atrask paslėptus kampelius ir istorines vietas.</p>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md text-center">
-            <i class="fas fa-puzzle-piece text-accent text-5xl mb-4"></i>
+          <div class="feature-card text-center">
+            <div class="feature-card-icon">
+              <i class="fas fa-puzzle-piece text-2xl"></i>
+            </div>
             <h3 class="text-xl font-semibold text-primary mb-3">Spręsk mįsles</h3>
             <p class="text-gray-700">Kiekvienas užduotis – tai galvosūkis, kuris reikalauja dėmesio ir komandinio darbo.
             </p>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md text-center">
-            <i class="fas fa-users text-accent text-5xl mb-4"></i>
+          <div class="feature-card text-center">
+            <div class="feature-card-icon">
+              <i class="fas fa-users text-2xl"></i>
+            </div>
             <h3 class="text-xl font-semibold text-primary mb-3">Žaisk su draugais</h3>
             <p class="text-gray-700">1–6 žmonių komanda, puikus pasirinkimas bet kokiai progai.</p>
           </div>
@@ -473,47 +409,8 @@
     </div>
   </div>
 
-  <script>
-    const TICKET_PRICE_EUR = 60;
-    const GAME_RULES_URL = '#zaidimo-taisykles';
-    const PRIVACY_POLICY_URL = '#privatumo-politika';
-    const COOKIES_POLICY_URL = '#slapuku-politika';
-    const TERMS_CONDITIONS_URL = '#taisykles-ir-salygos';
-
-    document.getElementById('ticket-price-display').textContent = TICKET_PRICE_EUR;
-    document.getElementById('coupon-price-display').textContent = TICKET_PRICE_EUR;
-
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    document.getElementById('game-rules-link').href = GAME_RULES_URL;
-    document.getElementById('privacy-policy-link').href = PRIVACY_POLICY_URL;
-    document.getElementById('cookies-policy-link').href = COOKIES_POLICY_URL;
-    document.getElementById('cookies-info-link').href = COOKIES_POLICY_URL;
-    document.getElementById('terms-conditions-link').href = TERMS_CONDITIONS_URL;
-
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptCookiesBtn = document.getElementById('accept-cookies');
-
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-      cookieBanner.style.display = 'none';
-    }
-
-    acceptCookiesBtn.addEventListener('click', function () {
-      localStorage.setItem('cookiesAccepted', 'true');
-      cookieBanner.style.display = 'none';
-    });
-
-    const faqToggles = document.querySelectorAll('.faq-toggle');
-    faqToggles.forEach(toggle => {
-      toggle.addEventListener('click', function () {
-        const content = this.nextElementSibling;
-        const icon = this.querySelector('.faq-icon');
-
-        content.classList.toggle('hidden');
-        icon.classList.toggle('rotate-180');
-      });
-    });
-  </script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 
