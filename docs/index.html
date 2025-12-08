@@ -245,77 +245,9 @@
     <section id="duk" class="py-16 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Dažniausiai užduodami klausimai</h2>
-        <div class="space-y-4">
-
-          <div class="border border-gray-300 rounded-lg">
-            <button class="w-full text-left px-6 py-4 transition flex justify-between items-center faq-toggle">
-              <span class="font-semibold text-primary">Kiek žmonių gali dalyvauti?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
-            </button>
-            <div class="px-6 py-4 text-gray-700 hidden faq-content">
-              Komandoje gali būti nuo 1 iki 6 dalyvių. Rekomenduojame 3–5 žmonių komandą – taip yra įdomiausia ir
-              efektyviausia.
-            </div>
-          </div>
-
-          <div class="border border-gray-300 rounded-lg">
-            <button class="w-full text-left px-6 py-4 transition flex justify-between items-center faq-toggle">
-              <span class="font-semibold text-primary">Ar galima žaisti lietingą dieną?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
-            </button>
-            <div class="px-6 py-4 text-gray-700 hidden faq-content">
-              Taip, žaidimas vyksta bet kokiu oru. Tiesiog apsirenkite pagal orą ir pasiimkite skėtį. Visos užduotys
-              pritaikytos lauko sąlygoms.
-            </div>
-          </div>
-
-          <div class="border border-gray-300 rounded-lg">
-            <button class="w-full text-left px-6 py-4 transition flex justify-between items-center faq-toggle">
-              <span class="font-semibold text-primary">Ar tinka vaikams?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
-            </button>
-            <div class="px-6 py-4 text-gray-700 hidden faq-content">
-              Taip, žaidimas tinkamas visai šeimai. Rekomenduojame vaikams nuo 10 metų, tačiau jaunesni vaikai taip pat
-              gali dalyvauti kartu su suaugusiaisiais.
-            </div>
-          </div>
-
-          <div class="border border-gray-300 rounded-lg">
-            <button class="w-full text-left px-6 py-4 transition flex justify-between items-center faq-toggle">
-              <span class="font-semibold text-primary">Kokia kalba vyksta žaidimas?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
-            </button>
-            <div class="px-6 py-4 text-gray-700 hidden faq-content">
-              Šiuo metu žaidimas prieinamas tik lietuvių kalba. Planuojame pridėti anglų kalbą artimiausiu metu.
-            </div>
-          </div>
-
-          <div class="border border-gray-300 rounded-lg">
-            <button class="w-full text-left px-6 py-4 transition flex justify-between items-center faq-toggle">
-              <span class="font-semibold text-primary">Ką reikia atsinešti?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
-            </button>
-            <div class="px-6 py-4 text-gray-700 hidden faq-content">
-              Prireiks tik vieno išmaniojo telefono su interneto ryšiu ir įkrautu akumuliatoriumi. Taip pat
-              rekomenduojame patogiusius batus vaikščiojimui.
-            </div>
-          </div>
-
-          <div class="border border-gray-300 rounded-lg">
-            <button class="w-full text-left px-6 py-4 transition flex justify-between items-center faq-toggle">
-              <span class="font-semibold text-primary">Ar galiu atšaukti bilietą?</span>
-              <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
-            </button>
-            <div class="px-6 py-4 text-gray-700 hidden faq-content">
-              Taip, bilietus galima atšaukti arba perkelti į kitą datą ne vėliau kaip 48 valandas iki žaidimo pradžios.
-              Smulkiau apie tai skaityk mūsų taisyklėse.
-            </div>
-          </div>
-
-        </div>
+        <div id="faq-list" class="space-y-4"></div>
       </div>
     </section>
-
     <section id="kontaktai" class="py-16 px-4 bg-neutral bg-opacity-20">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-4xl font-bold text-primary mb-8">Susisiek su mumis</h2>
@@ -345,6 +277,24 @@
 
   </main>
 
+  <button id="newsletter-floating-btn" type="button" class="newsletter-floating-btn">Gauti nuolaidą</button>
+
+  <div id="newsletter-modal-overlay" class="newsletter-modal-overlay" aria-hidden="true">
+    <div class="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-modal-title">
+      <button id="newsletter-close-btn" type="button" class="newsletter-close-btn" aria-label="Uždaryti">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="text-center">
+        <h2 id="newsletter-modal-title" class="text-3xl font-bold text-primary mb-3">Prisijunk prie naujienlaiškio</h2>
+        <p class="text-gray-700">Gauk išskirtinį nuolaidos kodą ir sužinok mūsų naujienas pirmasis.</p>
+      </div>
+      <form id="newsletter-form" class="newsletter-form">
+        <input type="email" id="newsletter-email" required placeholder="Įvesk savo el. paštą" />
+        <button type="submit">Gauti nuolaidą</button>
+      </form>
+    </div>
+  </div>
+
   <footer class="bg-primary text-white py-12 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-3 gap-8 mb-8">
@@ -373,7 +323,7 @@
         </div>
       </div>
       <div class="border-t border-white border-opacity-20 pt-8 text-center">
-        <p class="text-sm opacity-75">&amp;copy; <span id="current-year"></span> Squirrel Game. Visos teisės saugomos.
+        <p class="text-sm opacity-75">&copy; <span id="current-year"></span> Squirrel Game. Visos teisės saugomos.
         </p>
       </div>
     </div>

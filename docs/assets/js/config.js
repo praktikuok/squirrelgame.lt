@@ -96,5 +96,37 @@ window.SQUIRREL_GAME_CONFIG = Object.freeze({
       author: 'Andrius L.',
       rating: 5
     }
-  ]
+  ],
+  faq: [
+    {
+      question: 'Kiek žmonių gali dalyvauti?',
+      answer: 'Komandoje gali būti nuo 1 iki 6 dalyvių. Rekomenduojame 3–5 žmonių komandą – taip yra įdomiausia ir efektyviausia.'
+    },
+    {
+      question: 'Ar galima žaisti lietingą dieną?',
+      answer: 'Taip, žaidimas vyksta bet kokiu oru. Tiesiog apsirenkite pagal orą ir pasiimkite skėtį. Visos užduotys pritaikytos lauko sąlygoms.'
+    },
+    {
+      question: 'Ar tinka vaikams?',
+      answer: 'Žaidimas tinkamas visai šeimai. Rekomenduojame vaikams nuo 10 metų, tačiau jaunesni vaikai taip pat gali dalyvauti kartu su suaugusiaisiais.'
+    },
+    {
+      question: 'Kokia kalba vyksta žaidimas?',
+      answer: 'Šiuo metu žaidimas prieinamas tik lietuvių kalba. Planuojame pridėti anglų kalbą artimiausiu metu.'
+    },
+    {
+      question: 'Ką reikia atsinešti?',
+      answer: 'Prireiks tik vieno išmaniojo telefono su interneto ryšiu ir įkrautu akumuliatoriumi. Taip pat rekomenduojame patogius batus vaikščiojimui.'
+    },
+    {
+      question: 'Ar galiu atšaukti bilietą?',
+      answer: 'Taip, bilietus galima atšaukti arba perkelti į kitą datą ne vėliau kaip 48 valandas iki žaidimo pradžios. Smulkiau apie tai skaityk mūsų taisyklėse.'
+    }
+  ],
+  newsletterModal: {
+    delayMs: 30000,
+    enableDelay: true,
+    enableExitIntent: true,
+    buttonText: 'Gauti nuolaidą'
+  }
 });

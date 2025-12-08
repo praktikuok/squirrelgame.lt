@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const config = window.SQUIRREL_GAME_CONFIG || {};
+  const DAY_MS = 24 * 60 * 60 * 1000;
 
   const formatEuro = (value) => (typeof value === 'number'
     ? `${value.toLocaleString('lt-LT', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} €`
@@ -11,6 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const percent = Math.round(((original - current) / original) * 100);
     return percent > 0 ? `Sutaupyk ${percent}%` : '';
+  };
+
+  const safeGetStorage = (key) => {
+    try {
+      return localStorage.getItem(key);
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const safeSetStorage = (key, value) => {
+    try {
+      localStorage.setItem(key, value);
+    } catch (error) {
+      // ignore storage failures
+    }
   };
 
   const updatePrices = () => {
@@ -197,9 +214,142 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const renderFaq = () => {
+    const faqEntries = config.faq || [];
+    const container = document.getElementById('faq-list');
+    if (!container) {
+      return;
+    }
+
+    container.innerHTML = '';
+    faqEntries.forEach((item) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'border border-gray-300 rounded-lg';
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'w-full text-left px-6 py-4 bg-light transition flex justify-between items-center faq-toggle';
+      button.innerHTML = `<span class="font-semibold text-primary">${item.question || ''}</span><i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>`;
+
+      const answer = document.createElement('div');
+      answer.className = 'px-6 py-4 text-gray-700 hidden faq-content';
+      answer.textContent = item.answer || '';
+
+      button.addEventListener('click', () => {
+        answer.classList.toggle('hidden');
+        const icon = button.querySelector('.faq-icon');
+        if (icon) {
+          icon.classList.toggle('rotate-180');
+        }
+      });
+
+      wrapper.append(button, answer);
+      container.appendChild(wrapper);
+    });
+  };
+
+  const newsletterConfig = config.newsletterModal || {};
+  const overlay = document.getElementById('newsletter-modal-overlay');
+  const floatingBtn = document.getElementById('newsletter-floating-btn');
+  const closeBtn = document.getElementById('newsletter-close-btn');
+  const newsletterForm = document.getElementById('newsletter-form');
+  let modalOpen = false;
+
+  const newsletterKeys = {
+    delay: 'newsletterModalDelayShown',
+    exit: 'newsletterModalExitShown'
+  };
+
+  const shouldTriggerAuto = (key) => {
+    const value = parseInt(safeGetStorage(key), 10);
+    return Number.isNaN(value) || (Date.now() - value) > DAY_MS;
+  };
+
+  const markAutoTrigger = (key) => {
+    safeSetStorage(key, String(Date.now()));
+  };
+
+  const openNewsletterModal = (source) => {
+    if (!overlay || overlay.classList.contains('active')) {
+      return;
+    }
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    modalOpen = true;
+    if (source === 'delay') {
+      markAutoTrigger(newsletterKeys.delay);
+    }
+    if (source === 'exit') {
+      markAutoTrigger(newsletterKeys.exit);
+    }
+  };
+
+  const closeNewsletterModal = () => {
+    if (!overlay) {
+      return;
+    }
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    modalOpen = false;
+  };
+
+  if (floatingBtn) {
+    floatingBtn.textContent = newsletterConfig.buttonText || 'Gauti nuolaidą';
+    floatingBtn.addEventListener('click', () => openNewsletterModal('button'));
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeNewsletterModal);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay) {
+        closeNewsletterModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeNewsletterModal();
+    }
+  });
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const emailInput = document.getElementById('newsletter-email');
+      const email = emailInput ? emailInput.value.trim() : '';
+      if (email) {
+        alert(`Ačiū, ${email}! Netrukus atsiųsime nuolaidos kodą.`);
+        newsletterForm.reset();
+      }
+      closeNewsletterModal();
+    });
+  }
+
+  if (newsletterConfig.enableDelay !== false) {
+    const delay = typeof newsletterConfig.delayMs === 'number' ? newsletterConfig.delayMs : 30000;
+    setTimeout(() => {
+      if (shouldTriggerAuto(newsletterKeys.delay)) {
+        openNewsletterModal('delay');
+      }
+    }, delay);
+  }
+
+  if (newsletterConfig.enableExitIntent) {
+    document.addEventListener('mouseleave', (event) => {
+      if (event.clientY <= 0 && shouldTriggerAuto(newsletterKeys.exit)) {
+        openNewsletterModal('exit');
+      }
+    });
+  }
+
   updatePrices();
   renderLeaderboard();
   renderTestimonials();
+  renderFaq();
 
   const currentYearEl = document.getElementById('current-year');
   if (currentYearEl) {
@@ -225,28 +375,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const acceptCookiesBtn = document.getElementById('accept-cookies');
 
   if (cookieBanner && acceptCookiesBtn) {
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
+    if (safeGetStorage('cookiesAccepted') === 'true') {
       cookieBanner.style.display = 'none';
     }
 
     acceptCookiesBtn.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
+      safeSetStorage('cookiesAccepted', 'true');
       cookieBanner.style.display = 'none';
     });
   }
-
-  document.querySelectorAll('.faq-toggle').forEach((toggle) => {
-    toggle.addEventListener('click', function () {
-      const content = this.nextElementSibling;
-      const icon = this.querySelector('.faq-icon');
-
-      if (content) {
-        content.classList.toggle('hidden');
-      }
-
-      if (icon) {
-        icon.classList.toggle('rotate-180');
-      }
-    });
-  });
 });
