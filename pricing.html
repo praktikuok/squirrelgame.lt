@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Options</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      min-height: 100%;
+      width: 100%;
+      padding: 48px 24px;
+      overflow-auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .header p {
+      font-size: 20px;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    .discount-banner {
+      text-align: center;
+      padding: 16px 24px;
+      border-radius: 12px;
+      margin-bottom: 48px;
+      font-weight: 600;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .discount-banner i {
+      font-size: 24px;
+    }
+
+    .discount-code {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .pricing-card {
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .card-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .price-container {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .original-price {
+      font-size: 24px;
+      text-decoration: line-through;
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .current-price {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .discount-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .features-list li {
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+
+    .features-list i {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .select-button {
+      width: 100%;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .select-button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .game-info {
+      text-align: center;
+      padding: 32px;
+      border-radius: 16px;
+      margin-top: 48px;
+    }
+
+    .game-info h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .game-info p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 36px;
+      }
+
+      .header p {
+        font-size: 18px;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .current-price {
+        font-size: 40px;
+      }
+    }
+  </style>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <header class="header">
+        <h1 id="page-title">Choose Your Adventure</h1>
+        <p id="page-subtitle">Select the perfect option for your team</p>
+      </header>
+      <div class="discount-banner" id="discount-banner-section"><i class="fas fa-gift"></i> <span
+          id="discount-banner-text">Special Holiday Offer!</span> <span class="discount-code"
+          id="discount-code">CHRISTMAS</span>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card" id="card-1">
+          <div class="card-header">
+            <div class="card-icon" id="icon-1"><i class="fas fa-ticket"></i>
+            </div>
+            <h3 class="card-title" id="option-1-name">Digital Ticket</h3>
+          </div>
+          <div class="price-container">
+            <div class="original-price" id="original-price-1">
+              $75.00
+            </div>
+            <div class="current-price" id="current-price-1">
+              $59.99
+            </div><span class="discount-badge" id="discount-badge-1">Save 20%</span>
+          </div>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> <span>Instant digital delivery</span></li>
+            <li><i class="fas fa-users"></i> <span>Valid for 1-6 players</span></li>
+            <li><i class="fas fa-calendar-alt"></i> <span>Flexible booking dates</span></li>
+          </ul><button class="select-button" id="button-1">Select Option</button>
+        </div>
+        <div class="pricing-card" id="card-2">
+          <div class="card-header">
+            <div class="card-icon" id="icon-2"><i class="fas fa-tag"></i>
+            </div>
+            <h3 class="card-title" id="option-2-name">Digital Coupon</h3>
+          </div>
+          <div class="price-container">
+            <div class="original-price" id="original-price-2">
+              $75.00
+            </div>
+            <div class="current-price" id="current-price-2">
+              $59.99
+            </div><span class="discount-badge" id="discount-badge-2">Save 20%</span>
+          </div>
+          <ul class="features-list">
+            <li><i class="fas fa-gift"></i> <span>Perfect for gifting</span></li>
+            <li><i class="fas fa-users"></i> <span>Valid for 1-6 players</span></li>
+            <li><i class="fas fa-clock"></i> <span>6 months validity</span></li>
+          </ul><button class="select-button" id="button-2">Select Option</button>
+        </div>
+        <div class="pricing-card" id="card-3">
+          <div class="card-header">
+            <div class="card-icon" id="icon-3"><i class="fas fa-envelope"></i>
+            </div>
+            <h3 class="card-title" id="option-3-name">Physical Coupon</h3>
+          </div>
+          <div class="price-container">
+            <div class="original-price" id="original-price-3">
+              $90.00
+            </div>
+            <div class="current-price" id="current-price-3">
+              $69.99
+            </div><span class="discount-badge" id="discount-badge-3">Save 22%</span>
+          </div>
+          <ul class="features-list">
+            <li><i class="fas fa-box"></i> <span>Beautiful gift packaging</span></li>
+            <li><i class="fas fa-users"></i> <span>Valid for 1-6 players</span></li>
+            <li><i class="fas fa-shipping-fast"></i> <span>Free shipping included</span></li>
+          </ul><button class="select-button" id="button-3">Select Option</button>
+        </div>
+      </div>
+      <div class="game-info" id="game-info-section">
+        <h2>Breakroom Escape Experience</h2>
+        <p><i class="fas fa-puzzle-piece"></i> Solve challenging puzzles around the city</p>
+        <p><i class="fas fa-stopwatch"></i> Compete against time with your team</p>
+        <p><i class="fas fa-users"></i> Perfect for 1-6 players</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const CONFIG = {
+      // Prices
+      ticket_original_price: 75.00,
+      ticket_current_price: 59.99,
+      coupon_original_price: 75.00,
+      coupon_current_price: 59.99,
+      physical_original_price: 90.00,
+      physical_current_price: 69.99,
+
+      // Discount code
+      discount_code: "CHRISTMAS",
+
+      // Colors
+      color_primary: "#0E3B43",
+      color_secondary: "#9EE493",
+      color_accent: "#F4A259",
+      color_neutral: "#DAF7DC",
+      color_dark_green: "#357266",
+      color_light_bg: "#fafafa",
+      color_light_green: "#4ba68a",
+
+      // Text content
+      page_title: "Choose Your Adventure",
+      page_subtitle: "Select the perfect option for your team",
+      discount_banner_text: "Special Holiday Offer!",
+      option_1_name: "Digital Ticket",
+      option_2_name: "Digital Coupon",
+      option_3_name: "Physical Coupon",
+      cta_button: "Select Option",
+
+      // Font
+      font_family: "Inter"
+    };
+
+    const defaultConfig = { ...CONFIG };
+
+    function calculateDiscount(original, current) {
+      return Math.round(((original - current) / original) * 100);
+    }
+
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+      // Apply colors
+      document.querySelector('.wrapper').style.background = config.color_neutral || defaultConfig.color_neutral;
+
+      document.querySelector('.header h1').style.color = config.color_primary || defaultConfig.color_primary;
+      document.querySelector('.header p').style.color = config.color_dark_green || defaultConfig.color_dark_green;
+
+      const discountBanner = document.querySelector('.discount-banner');
+      discountBanner.style.background = config.color_secondary || defaultConfig.color_secondary;
+      discountBanner.style.color = config.color_primary || defaultConfig.color_primary;
+
+      const discountCodeEl = document.querySelector('.discount-code');
+      discountCodeEl.style.background = config.color_primary || defaultConfig.color_primary;
+      discountCodeEl.style.color = config.color_secondary || defaultConfig.color_secondary;
+
+      const cards = document.querySelectorAll('.pricing-card');
+      cards.forEach(card => {
+        card.style.background = config.color_light_bg || defaultConfig.color_light_bg;
+      });
+
+      document.querySelector('#card-1::before') || (document.querySelector('#card-1').style.borderTop = `4px solid ${config.color_primary || defaultConfig.color_primary}`);
+      document.querySelector('#card-2::before') || (document.querySelector('#card-2').style.borderTop = `4px solid ${config.color_light_green || defaultConfig.color_light_green}`);
+      document.querySelector('#card-3::before') || (document.querySelector('#card-3').style.borderTop = `4px solid ${config.color_accent || defaultConfig.color_accent}`);
+
+      const icons = document.querySelectorAll('.card-icon');
+      icons[0].style.color = config.color_primary || defaultConfig.color_primary;
+      icons[1].style.color = config.color_light_green || defaultConfig.color_light_green;
+      icons[2].style.color = config.color_accent || defaultConfig.color_accent;
+
+      document.querySelectorAll('.card-title').forEach(title => {
+        title.style.color = config.color_primary || defaultConfig.color_primary;
+      });
+
+      document.querySelectorAll('.current-price').forEach(price => {
+        price.style.color = config.color_primary || defaultConfig.color_primary;
+      });
+
+      const badges = document.querySelectorAll('.discount-badge');
+      badges.forEach(badge => {
+        badge.style.background = config.color_accent || defaultConfig.color_accent;
+        badge.style.color = config.color_light_bg || defaultConfig.color_light_bg;
+      });
+
+      document.querySelectorAll('.features-list i').forEach(icon => {
+        icon.style.color = config.color_light_green || defaultConfig.color_light_green;
+      });
+
+      const buttons = document.querySelectorAll('.select-button');
+      buttons[0].style.background = config.color_primary || defaultConfig.color_primary;
+      buttons[0].style.color = config.color_neutral || defaultConfig.color_neutral;
+      buttons[1].style.background = config.color_light_green || defaultConfig.color_light_green;
+      buttons[1].style.color = config.color_light_bg || defaultConfig.color_light_bg;
+      buttons[2].style.background = config.color_accent || defaultConfig.color_accent;
+      buttons[2].style.color = config.color_light_bg || defaultConfig.color_light_bg;
+
+      const gameInfo = document.querySelector('.game-info');
+      gameInfo.style.background = config.color_light_bg || defaultConfig.color_light_bg;
+      gameInfo.style.color = config.color_primary || defaultConfig.color_primary;
+      gameInfo.querySelector('h2').style.color = config.color_dark_green || defaultConfig.color_dark_green;
+      gameInfo.querySelectorAll('i').forEach(icon => {
+        icon.style.color = config.color_light_green || defaultConfig.color_light_green;
+      });
+
+      // Update text content
+      document.getElementById('page-title').textContent = config.page_title || defaultConfig.page_title;
+      document.getElementById('page-subtitle').textContent = config.page_subtitle || defaultConfig.page_subtitle;
+      document.getElementById('discount-banner-text').textContent = config.discount_banner_text || defaultConfig.discount_banner_text;
+      document.getElementById('discount-code').textContent = config.discount_code || defaultConfig.discount_code;
+      document.getElementById('option-1-name').textContent = config.option_1_name || defaultConfig.option_1_name;
+      document.getElementById('option-2-name').textContent = config.option_2_name || defaultConfig.option_2_name;
+      document.getElementById('option-3-name').textContent = config.option_3_name || defaultConfig.option_3_name;
+
+      buttons.forEach(button => {
+        button.textContent = config.cta_button || defaultConfig.cta_button;
+      });
+
+      // Update prices
+      const ticketDiscount = calculateDiscount(config.ticket_original_price || defaultConfig.ticket_original_price, config.ticket_current_price || defaultConfig.ticket_current_price);
+      document.getElementById('original-price-1').textContent = `$${(config.ticket_original_price || defaultConfig.ticket_original_price).toFixed(2)}`;
+      document.getElementById('current-price-1').textContent = `$${(config.ticket_current_price || defaultConfig.ticket_current_price).toFixed(2)}`;
+      document.getElementById('discount-badge-1').textContent = `Save ${ticketDiscount}%`;
+
+      const couponDiscount = calculateDiscount(config.coupon_original_price || defaultConfig.coupon_original_price, config.coupon_current_price || defaultConfig.coupon_current_price);
+      document.getElementById('original-price-2').textContent = `$${(config.coupon_original_price || defaultConfig.coupon_original_price).toFixed(2)}`;
+      document.getElementById('current-price-2').textContent = `$${(config.coupon_current_price || defaultConfig.coupon_current_price).toFixed(2)}`;
+      document.getElementById('discount-badge-2').textContent = `Save ${couponDiscount}%`;
+
+      const physicalDiscount = calculateDiscount(config.physical_original_price || defaultConfig.physical_original_price, config.physical_current_price || defaultConfig.physical_current_price);
+      document.getElementById('original-price-3').textContent = `$${(config.physical_original_price || defaultConfig.physical_original_price).toFixed(2)}`;
+      document.getElementById('current-price-3').textContent = `$${(config.physical_current_price || defaultConfig.physical_current_price).toFixed(2)}`;
+      document.getElementById('discount-badge-3').textContent = `Save ${physicalDiscount}%`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.color_neutral || defaultConfig.color_neutral,
+            set: (value) => {
+              config.color_neutral = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ color_neutral: value });
+            }
+          },
+          {
+            get: () => config.color_light_bg || defaultConfig.color_light_bg,
+            set: (value) => {
+              config.color_light_bg = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ color_light_bg: value });
+            }
+          },
+          {
+            get: () => config.color_primary || defaultConfig.color_primary,
+            set: (value) => {
+              config.color_primary = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ color_primary: value });
+            }
+          },
+          {
+            get: () => config.color_light_green || defaultConfig.color_light_green,
+            set: (value) => {
+              config.color_light_green = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ color_light_green: value });
+            }
+          },
+          {
+            get: () => config.color_accent || defaultConfig.color_accent,
+            set: (value) => {
+              config.color_accent = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ color_accent: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["page_title", config.page_title || defaultConfig.page_title],
+        ["page_subtitle", config.page_subtitle || defaultConfig.page_subtitle],
+        ["option_1_name", config.option_1_name || defaultConfig.option_1_name],
+        ["option_2_name", config.option_2_name || defaultConfig.option_2_name],
+        ["option_3_name", config.option_3_name || defaultConfig.option_3_name],
+        ["discount_banner_text", config.discount_banner_text || defaultConfig.discount_banner_text],
+        ["cta_button", config.cta_button || defaultConfig.cta_button]
+      ]);
+    }
+
+    async function init() {
+      if (window.elementSdk) {
+        await window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      }
+
+      await onConfigChange(window.elementSdk ? window.elementSdk.config : defaultConfig);
+
+      document.querySelectorAll('.select-button').forEach((button, index) => {
+        button.addEventListener('click', () => {
+          const optionName = document.querySelectorAll('.card-title')[index].textContent;
+          const price = document.querySelectorAll('.current-price')[index].textContent;
+          button.textContent = '✓ Selected!';
+          button.style.opacity = '0.8';
+          setTimeout(() => {
+            button.textContent = window.elementSdk ? window.elementSdk.config.cta_button || defaultConfig.cta_button : defaultConfig.cta_button;
+            button.style.opacity = '1';
+          }, 2000);
+        });
+      });
+    }
+
+    init();
+  </script>
+  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9aadec10d3d4ce1b',t:'MTc2NTIxNDMwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
