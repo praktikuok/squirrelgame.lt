@@ -7,12 +7,13 @@
   <title>Squirrel Game – Miesto galvosūkių žaidimas Vilniuje</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/styles-v2.css">
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="text-gray-800">
 
-  <header class="bg-primary text-white shadow-md">
+  <header class="site-header text-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
         <div class="w-[150px] h-[150px] bg-secondary rounded-lg flex items-center justify-center">
@@ -32,26 +33,22 @@
     </div>
   </header>
 
-  <main class="w-full">
+  <main class="w-full site-main">
 
-    <section class="hero-gradient text-white py-20 px-4">
+    <section class="hero-section text-white py-20 px-4">
       <div class="max-w-5xl mx-auto text-center">
         <h2 class="text-5xl font-bold mb-6">Atrask Vilnių kitaip – spręsk galvosūkius mieste!</h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto">Įdomus nuotykis gryname ore, tobulas draugams, šeimai ar įmonės
           komandai. Vaikštai, spręsk mįsles ir pažink sostinę naujais rakursais.</p>
         <div class="flex gap-4 justify-center">
-          <a href="#kainos"
-            class="bg-accent hover:bg-opacity-90 text-white px-8 py-3 rounded-lg font-semibold transition">Pirkti
-            bilietą</a>
-          <a href="#apie"
-            class="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition">Sužinoti
-            daugiau</a>
+          <a href="#kainos" class="cta-primary">Pirkti bilietą</a>
+          <a href="#apie" class="cta-secondary">Sužinoti daugiau</a>
         </div>
       </div>
     </section>
 
-    <section id="apie" class="py-16 px-4 bg-neutral bg-opacity-20">
-      <div class="max-w-6xl mx-auto">
+    <section id="apie" class="py-16 px-4">
+      <div class="max-w-6xl mx-auto section-muted p-8 md:p-12">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Apie žaidimą</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <div class="feature-card text-center">
@@ -80,8 +77,8 @@
       </div>
     </section>
 
-    <section class="py-16 px-4 bg-white">
-      <div class="max-w-4xl mx-auto">
+    <section class="py-16 px-4">
+      <div class="max-w-4xl mx-auto section-light p-8 md:p-12 shadow-2xl">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Kaip veikia žaidimas?</h2>
         <div class="space-y-8">
           <div class="flex gap-6 items-start">
@@ -128,30 +125,30 @@
       </div>
     </section>
 
-    <section id="kainos" class="py-16 px-4 bg-neutral bg-opacity-20">
-      <div class="max-w-6xl mx-auto">
+    <section id="kainos" class="py-16 px-4">
+      <div class="max-w-6xl mx-auto section-muted p-8 md:p-12">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Kainos ir pasiūlymai</h2>
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-          <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-primary">
+          <div class="pricing-card p-8 text-center">
             <i class="fas fa-ticket-alt text-accent text-5xl mb-4"></i>
             <h3 class="text-2xl font-bold text-primary mb-3">Bilietas komandai</h3>
             <p class="text-gray-700 mb-6">1–6 dalyviams. Pasirink datą ir laiką, kada tau patogu. Žaidimas trunka apie
               2–3 valandas.</p>
             <div class="text-4xl font-bold text-dark-green mb-6"><span id="ticket-price-display"></span> €</div>
             <a href="#"
-              class="block w-full bg-accent hover:bg-opacity-90 text-white text-center px-6 py-3 rounded-lg font-semibold transition">Pirkti
+              class="block w-full bg-accent text-white text-center px-6 py-3 rounded-full font-semibold transition transform hover:-translate-y-1 hover:shadow-xl">Pirkti
               bilietą</a>
           </div>
 
-          <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-accent">
+          <div class="pricing-card p-8 text-center">
             <i class="fas fa-gift text-accent text-5xl mb-4"></i>
             <h3 class="text-2xl font-bold text-primary mb-3">Dovanų kuponas</h3>
             <p class="text-gray-700 mb-6">Tobula dovana 1–6 asmenims. Galioja 12 mėnesių nuo įsigijimo dienos.
               Savininkas pats pasirenka laiką.</p>
             <div class="text-4xl font-bold text-dark-green mb-6"><span id="coupon-price-display"></span> €</div>
             <a href="#"
-              class="block w-full bg-dark-green hover:bg-opacity-90 text-white text-center px-6 py-3 rounded-lg font-semibold transition">Pirkti
+              class="block w-full bg-dark-green text-white text-center px-6 py-3 rounded-full font-semibold transition transform hover:-translate-y-1 hover:shadow-xl">Pirkti
               dovanų kuponą</a>
           </div>
 
@@ -159,11 +156,11 @@
       </div>
     </section>
 
-    <section class="py-16 px-4 bg-white">
-      <div class="max-w-5xl mx-auto">
+    <section class="py-16 px-4">
+      <div class="max-w-5xl mx-auto section-light p-8 md:p-12">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Lyderių lentelė</h2>
-        <div class="bg-neutral bg-opacity-30 p-8 rounded-lg">
-          <table class="w-full text-left">
+        <div class="mt-8">
+          <table class="leaderboard-table text-left">
             <thead>
               <tr class="border-b-2 border-primary">
                 <th class="py-3 px-4 font-semibold text-primary">Vieta</th>
@@ -209,12 +206,12 @@
       </div>
     </section>
 
-    <section id="atsiliepimai" class="py-16 px-4 bg-neutral bg-opacity-20">
-      <div class="max-w-6xl mx-auto">
+    <section id="atsiliepimai" class="py-16 px-4">
+      <div class="max-w-6xl mx-auto section-light p-8 md:p-12">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Ką sako žaidėjai</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="testimonial-card">
             <div class="flex gap-1 text-accent mb-3">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -227,7 +224,7 @@
             <p class="font-semibold text-primary">– Justina M.</p>
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="testimonial-card">
             <div class="flex gap-1 text-accent mb-3">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -240,7 +237,7 @@
             <p class="font-semibold text-primary">– Tomas K.</p>
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="testimonial-card">
             <div class="flex gap-1 text-accent mb-3">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -253,7 +250,7 @@
             <p class="font-semibold text-primary">– Giedrė P.</p>
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="testimonial-card">
             <div class="flex gap-1 text-accent mb-3">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -270,14 +267,13 @@
       </div>
     </section>
 
-    <section id="duk" class="py-16 px-4 bg-white">
-      <div class="max-w-4xl mx-auto">
+    <section id="duk" class="py-16 px-4">
+      <div class="max-w-4xl mx-auto section-light p-8 md:p-12">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Dažniausiai užduodami klausimai</h2>
         <div class="space-y-4">
 
-          <div class="border border-gray-300 rounded-lg">
-            <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+          <div class="faq-card">
+            <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-toggle transition">
               <span class="font-semibold text-primary">Kiek žmonių gali dalyvauti?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -287,9 +283,8 @@
             </div>
           </div>
 
-          <div class="border border-gray-300 rounded-lg">
-            <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+          <div class="faq-card">
+            <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-toggle transition">
               <span class="font-semibold text-primary">Ar galima žaisti lietingą dieną?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -299,9 +294,8 @@
             </div>
           </div>
 
-          <div class="border border-gray-300 rounded-lg">
-            <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+          <div class="faq-card">
+            <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-toggle transition">
               <span class="font-semibold text-primary">Ar tinka vaikams?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -311,9 +305,8 @@
             </div>
           </div>
 
-          <div class="border border-gray-300 rounded-lg">
-            <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+          <div class="faq-card">
+            <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-toggle transition">
               <span class="font-semibold text-primary">Kokia kalba vyksta žaidimas?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -322,9 +315,8 @@
             </div>
           </div>
 
-          <div class="border border-gray-300 rounded-lg">
-            <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+          <div class="faq-card">
+            <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-toggle transition">
               <span class="font-semibold text-primary">Ką reikia atsinešti?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -334,9 +326,8 @@
             </div>
           </div>
 
-          <div class="border border-gray-300 rounded-lg">
-            <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+          <div class="faq-card">
+            <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-toggle transition">
               <span class="font-semibold text-primary">Ar galiu atšaukti bilietą?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -350,23 +341,23 @@
       </div>
     </section>
 
-    <section id="kontaktai" class="py-16 px-4 bg-neutral bg-opacity-20">
-      <div class="max-w-4xl mx-auto text-center">
+    <section id="kontaktai" class="py-16 px-4">
+      <div class="max-w-4xl mx-auto section-light p-8 md:p-12 text-center">
         <h2 class="text-4xl font-bold text-primary mb-8">Susisiek su mumis</h2>
         <p class="text-gray-700 mb-8">Turi klausimų ar pageidavimų? Parašyk mums!</p>
         <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
           <a href="mailto:info@squirrelgame.lt"
-            class="flex items-center gap-3 text-primary hover:text-dark-green transition">
+            class="flex items-center gap-3 text-primary hover:text-dark-green transition bg-white/80 px-5 py-3 rounded-full shadow-lg">
             <i class="fas fa-envelope text-2xl"></i>
             <span class="font-medium">info@squirrelgame.lt</span>
           </a>
           <a href="https://instagram.com/squirrelgame.lt" target="_blank" rel="noopener noreferrer"
-            class="flex items-center gap-3 text-primary hover:text-dark-green transition">
+            class="flex items-center gap-3 text-primary hover:text-dark-green transition bg-white/80 px-5 py-3 rounded-full shadow-lg">
             <i class="fab fa-instagram text-2xl"></i>
             <span class="font-medium">@squirrelgame.lt</span>
           </a>
           <a href="https://tiktok.com/@squirrelgame.lt" target="_blank" rel="noopener noreferrer"
-            class="flex items-center gap-3 text-primary hover:text-dark-green transition">
+            class="flex items-center gap-3 text-primary hover:text-dark-green transition bg-white/80 px-5 py-3 rounded-full shadow-lg">
             <i class="fab fa-tiktok text-2xl"></i>
             <span class="font-medium">@squirrelgame.lt</span>
           </a>
@@ -376,39 +367,26 @@
 
   </main>
 
-  <footer class="bg-primary text-white py-12 px-4">
+  <footer class="site-footer text-white py-8 px-4">
     <div class="max-w-6xl mx-auto">
-      <div class="grid md:grid-cols-3 gap-8 mb-8">
-        <div>
-          <h4 class="font-bold text-xl mb-4">Squirrel Game</h4>
-          <p class="text-sm opacity-90">Lauko miesto galvosūkių žaidimas, kuris paverčia tavo komandą tikrais miesto
-            tyrinėtojais.</p>
-        </div>
-        <div>
-          <h4 class="font-bold text-xl mb-4">Dokumentai</h4>
-          <ul class="space-y-2 text-sm opacity-90">
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="game-rules-link">Žaidimo taisyklės</a></li>
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="privacy-policy-link">Privatumo politika</a>
-            </li>
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="cookies-policy-link">Slapukų politika</a>
-            </li>
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="terms-conditions-link">Taisyklės ir sąlygos</a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-xl mb-4">Kur vyksta?</h4>
-          <p class="text-sm opacity-90 mb-2">Šiuo metu žaidimas vyksta Vilniuje.</p>
-          <p class="text-sm opacity-75">Jau planuojame plėstis į kitus Lietuvos miestus – sek naujienas!</p>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#" class="hover:text-secondary transition" id="game-rules-link">Žaidimo taisyklės</a>
+          <a href="#" class="hover:text-secondary transition" id="privacy-policy-link">Privatumo politika</a>
+          <a href="#" class="hover:text-secondary transition" id="cookies-policy-link">Slapukų politika</a>
+          <a href="#" class="hover:text-secondary transition" id="terms-conditions-link">Taisyklės ir sąlygos</a>
         </div>
       </div>
-      <div class="border-t border-white border-opacity-20 pt-8 text-center">
-        <p class="text-sm opacity-75">&amp;copy; <span id="current-year"></span> Squirrel Game. Visos teisės saugomos.</p>
+      <div class="text-center text-sm text-gray-300 mb-4">
+        <p>Šiuo metu žaidimas vyksta tik Vilniuje. Planuojame plėstis į kitus Lietuvos miestus!</p>
+      </div>
+      <div class="text-center text-sm text-gray-400">
+        <p>&amp;copy; <span id="current-year"></span> Squirrel Game. Visos teisės saugomos.</p>
       </div>
     </div>
   </footer>
 
-  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-primary text-white p-4 shadow-lg z-50">
+  <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-primary text-white p-4 shadow-lg z-50">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-sm">Šis tinklalapis naudoja slapukus, kad užtikrintų geriausią patirtį. Tęsdamas naršymą, sutinki
         su slapukų naudojimu.</p>

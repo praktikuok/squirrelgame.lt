@@ -4,6 +4,7 @@
   --color-accent: #F4A259;
   --color-neutral: #DAF7DC;
   --color-dark-green: #357266;
+  --color-light-green: #4ba68a;
 }
 
 body {
@@ -28,6 +29,10 @@ body {
 
 .bg-dark-green {
   background-color: var(--color-dark-green);
+}
+
+.bg-dark-green-gradient {
+  background: linear-gradient(135deg, var(--color-dark-green) 0%, var(--color-light-green) 100%);
 }
 
 .text-primary {
@@ -69,17 +74,20 @@ body {
 }
 
 .feature-card {
-  background: linear-gradient(160deg, #ffffff, #f0faf3);
+  background: rgba(255, 255, 255, 0.28);
   border-radius: 1.5rem;
   padding: 1.75rem;
-  border: 1px solid rgba(14, 59, 67, 0.075);
-  box-shadow: 0 15px 35px rgba(14, 59, 67, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 25px 45px rgba(5, 28, 31, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 45px rgba(14, 59, 67, 0.15);
+  box-shadow: 0 35px 55px rgba(5, 28, 31, 0.2);
+  background: rgba(255, 255, 255, 0.38);
 }
 
 .feature-card-icon {
