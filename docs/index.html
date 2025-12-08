@@ -129,33 +129,81 @@
       </div>
     </section>
 
-    <section id="kainos" class="py-16 px-4 bg-neutral bg-opacity-20">
+    <section id="kainos" class="py-16 px-4 bg-neutral">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-4xl font-bold text-primary text-center mb-12">Kainos ir pasiūlymai</h2>
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-          <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-primary">
-            <i class="fas fa-ticket-alt text-accent text-5xl mb-4"></i>
-            <h3 class="text-2xl font-bold text-primary mb-3">Bilietas komandai</h3>
-            <p class="text-gray-700 mb-6">1–6 dalyviams. Pasirink datą ir laiką, kada tau patogu. Žaidimas trunka apie
-              2–3 valandas.</p>
-            <div class="text-4xl font-bold text-dark-green mb-6"><span id="ticket-price-display"></span> €</div>
-            <a href="#"
-              class="block w-full bg-accent hover:bg-opacity-90 text-white text-center px-6 py-3 rounded-lg font-semibold transition">Pirkti
-              bilietą</a>
+        <div class="discount-banner"><i class="fas fa-gift"></i> <span>Speciali Šventinė nuolaida su kodu!</span> <span
+            class="discount-code" id="discount-code">KALĖDOS</span>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card" id="card-1">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-ticket"></i>
+              </div>
+              <h3 class="card-title">Bilietas</h3>
+            </div>
+            <div class="price-container">
+              <div class="original-price" id="original-price-1">
+                75.00€
+              </div>
+              <div class="current-price" id="current-price-1">
+                59.99€
+              </div><span class="discount-badge" id="discount-badge-1">Sutaupykite 20%</span>
+            </div>
+            <ul class="features-list">
+              <li><i class="fas fa-envelope"></i> <span>Pristatymas el. paštu</span></li>
+              <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
+              <li><i class="fas fa-calendar-alt"></i> <span>Lankstūs rezervacijos laikai</span></li>
+            </ul><a href="/option" class="select-button">Pasirinkti</a>
           </div>
-
-          <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-accent">
-            <i class="fas fa-gift text-accent text-5xl mb-4"></i>
-            <h3 class="text-2xl font-bold text-primary mb-3">Dovanų kuponas</h3>
-            <p class="text-gray-700 mb-6">Tobula dovana 1–6 asmenims. Galioja 12 mėnesių nuo įsigijimo dienos.
-              Savininkas pats pasirenka laiką.</p>
-            <div class="text-4xl font-bold text-dark-green mb-6"><span id="coupon-price-display"></span> €</div>
-            <a href="#"
-              class="block w-full bg-dark-green hover:bg-opacity-90 text-white text-center px-6 py-3 rounded-lg font-semibold transition">Pirkti
-              dovanų kuponą</a>
+          <div class="pricing-card" id="card-2">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-gift"></i>
+              </div>
+              <h3 class="card-title">Dovanų Kuponas</h3>
+            </div>
+            <div class="price-container">
+              <div class="original-price" id="original-price-2">
+                75.00€
+              </div>
+              <div class="current-price" id="current-price-2">
+                59.99€
+              </div><span class="discount-badge" id="discount-badge-2">Sutaupykite 20%</span>
+            </div>
+            <ul class="features-list">
+              <li><i class="fas fa-gift"></i> <span>Puiki dovana artimiesiems</span></li>
+              <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
+              <li><i class="fas fa-clock"></i> <span>Galioja 12 mėnesių</span></li>
+            </ul><a href="/option" class="select-button">Pasirinkti</a>
           </div>
-
+          <div class="pricing-card" id="card-3">
+            <div class="card-header">
+              <div class="card-icon"><i class="fas fa-gifts"></i>
+              </div>
+              <h3 class="card-title">Fizinis Kuponas</h3>
+            </div>
+            <div class="price-container">
+              <div class="original-price" id="original-price-3">
+                90.00€
+              </div>
+              <div class="current-price" id="current-price-3">
+                69.99€
+              </div><span class="discount-badge" id="discount-badge-3">Sutaupykite 22%</span>
+            </div>
+            <ul class="features-list">
+              <li><i class="fas fa-tree"></i> <span>Kalėdinis dizainas + dovanėlė</span></li>
+              <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
+              <li><i class="fas fa-shipping-fast"></i> <span>Nemokamas pristatymas</span></li>
+            </ul><a href="/option" class="select-button">Pasirinkti</a>
+          </div>
+        </div>
+        <div class="game-info">
+          <h2>Pabėgimo Kambario Patirtis</h2>
+          <p><i class="fas fa-puzzle-piece"></i> Spręskite įdomius galvosūkius mieste</p>
+          <p><i class="fas fa-stopwatch"></i> Varžykitės su laiku su savo komanda</p>
+          <p><i class="fas fa-users"></i> Tobula 2-6 žaidėjams</p>
+          <p><i class="fas fa-clock"></i> Trukmė 2-3 valandos</p>
         </div>
       </div>
     </section>
@@ -278,7 +326,7 @@
 
           <div class="border border-gray-300 rounded-lg">
             <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+              class="w-full text-left px-6 py-4 bg-neutral transition flex justify-between items-center faq-toggle">
               <span class="font-semibold text-primary">Kiek žmonių gali dalyvauti?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -290,7 +338,7 @@
 
           <div class="border border-gray-300 rounded-lg">
             <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+              class="w-full text-left px-6 py-4 bg-neutral transition flex justify-between items-center faq-toggle">
               <span class="font-semibold text-primary">Ar galima žaisti lietingą dieną?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -302,7 +350,7 @@
 
           <div class="border border-gray-300 rounded-lg">
             <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+              class="w-full text-left px-6 py-4 bg-neutral transition flex justify-between items-center faq-toggle">
               <span class="font-semibold text-primary">Ar tinka vaikams?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -314,7 +362,7 @@
 
           <div class="border border-gray-300 rounded-lg">
             <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+              class="w-full text-left px-6 py-4 bg-neutral transition flex justify-between items-center faq-toggle">
               <span class="font-semibold text-primary">Kokia kalba vyksta žaidimas?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -325,7 +373,7 @@
 
           <div class="border border-gray-300 rounded-lg">
             <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+              class="w-full text-left px-6 py-4 bg-neutral transition flex justify-between items-center faq-toggle">
               <span class="font-semibold text-primary">Ką reikia atsinešti?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
@@ -337,7 +385,7 @@
 
           <div class="border border-gray-300 rounded-lg">
             <button
-              class="w-full text-left px-6 py-4 bg-neutral bg-opacity-10 hover:bg-opacity-20 transition flex justify-between items-center faq-toggle">
+              class="w-full text-left px-6 py-4 bg-neutral transition flex justify-between items-center faq-toggle">
               <span class="font-semibold text-primary">Ar galiu atšaukti bilietą?</span>
               <i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>
             </button>
