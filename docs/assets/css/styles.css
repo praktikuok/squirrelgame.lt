@@ -121,6 +121,26 @@ body {
   box-shadow: 0 25px 50px rgba(5, 28, 31, 0.15);
 }
 
+.bg-surface {
+  background-color: #ffffff;
+}
+
+.bg-surface-muted {
+  background-color: #daf7dc;
+}
+
+.bg-soft {
+  background-color: #abc8c0;
+}
+
+.text-muted {
+  color: #357266;
+}
+
+.border-subtle {
+  border-color: #abc8c0;
+}
+
 .discount-banner {
   text-align: center;
   padding: 16px 24px;

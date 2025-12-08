@@ -208,114 +208,37 @@
       </div>
     </section>
 
-    <section class="py-16 px-4 bg-white">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-4xl font-bold text-primary text-center mb-12">Lyderių lentelė</h2>
-        <div class="bg-neutral bg-opacity-30 p-8 rounded-lg">
-          <table class="w-full text-left">
-            <thead>
-              <tr class="border-b-2 border-primary">
-                <th class="py-3 px-4 font-semibold text-primary">Vieta</th>
-                <th class="py-3 px-4 font-semibold text-primary">Komanda</th>
-                <th class="py-3 px-4 font-semibold text-primary">Laikas</th>
-                <th class="py-3 px-4 font-semibold text-primary">Data</th>
+    <section id="lyderiu-lentele" class="bg-light py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-primary text-center mb-8">Lyderių lentelė</h2>
+        <p class="text-center text-muted mb-12">Pažiūrėk, kaip sekasi kitoms komandoms ir siek geriausio rezultato!</p>
+
+        <div class="bg-surface rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto">
+          <table class="w-full">
+            <thead class="bg-soft">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold text-primary">Vieta</th>
+                <th class="px-6 py-4 text-left font-semibold text-primary">Komandos pavadinimas</th>
+                <th class="px-6 py-4 text-left font-semibold text-primary">Taškai</th>
+                <th class="px-6 py-4 text-left font-semibold text-primary">Laikas</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="border-b border-gray-300">
-                <td class="py-3 px-4 font-bold text-accent">1</td>
-                <td class="py-3 px-4">Voverės medžiotojai</td>
-                <td class="py-3 px-4">2:15:32</td>
-                <td class="py-3 px-4">2024-12-10</td>
-              </tr>
-              <tr class="border-b border-gray-300">
-                <td class="py-3 px-4 font-bold text-accent">2</td>
-                <td class="py-3 px-4">Miesto tyrinėtojai</td>
-                <td class="py-3 px-4">2:28:45</td>
-                <td class="py-3 px-4">2024-12-08</td>
-              </tr>
-              <tr class="border-b border-gray-300">
-                <td class="py-3 px-4 font-bold text-accent">3</td>
-                <td class="py-3 px-4">Galvosūkių karaliai</td>
-                <td class="py-3 px-4">2:34:12</td>
-                <td class="py-3 px-4">2024-12-05</td>
-              </tr>
-              <tr class="border-b border-gray-300">
-                <td class="py-3 px-4">4</td>
-                <td class="py-3 px-4">Nuotykių ieškotojai</td>
-                <td class="py-3 px-4">2:41:03</td>
-                <td class="py-3 px-4">2024-12-03</td>
-              </tr>
-              <tr>
-                <td class="py-3 px-4">5</td>
-                <td class="py-3 px-4">Drąsuoliai</td>
-                <td class="py-3 px-4">2:47:29</td>
-                <td class="py-3 px-4">2024-12-01</td>
-              </tr>
+            <tbody id="leaderboard-body">
             </tbody>
           </table>
         </div>
+
+        <p id="leaderboard-note" class="text-center text-muted mt-6 text-sm">Duomenys atnaujinami kas savaitę.</p>
       </div>
     </section>
 
     <section id="atsiliepimai" class="py-16 px-4 bg-neutral bg-opacity-20">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-primary text-center mb-12">Ką sako žaidėjai</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex gap-1 text-accent mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="text-gray-700 mb-4 italic">"Nuostabus būdas praleisti laiką su draugais! Mįslės buvo įdomios, o
-              miestas – dar gražesnis nei maniau."</p>
-            <p class="font-semibold text-primary">– Justina M.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex gap-1 text-accent mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="text-gray-700 mb-4 italic">"Puiki komandos veikla įmonės renginiui. Visi dalyvavo, juokėsi ir
-              varžėsi. Rekomenduoju!"</p>
-            <p class="font-semibold text-primary">– Tomas K.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex gap-1 text-accent mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="text-gray-700 mb-4 italic">"Mano šeimai labai patiko! Net vaikai su entuziazmu sprendė užduotis.
-              Ačiū už puikų popietę!"</p>
-            <p class="font-semibold text-primary">– Giedrė P.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex gap-1 text-accent mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="text-gray-700 mb-4 italic">"Originalus, smagu ir visai nesudėtinga dalyvauti. Tikrai grįšim dar
-              kartą su kitais draugais!"</p>
-            <p class="font-semibold text-primary">– Andrius L.</p>
-          </div>
-
-        </div>
+        <h2 class="text-4xl font-bold text-primary text-center mb-4">Ką sako žaidėjai</h2>
+        <p class="text-sm font-bold text-dark-green text-center mb-8">Atsiliepimą galite palikti per 30 dienų po
+          dalyvavimo
+        </p>
+        <div id="testimonials-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
       </div>
     </section>
 

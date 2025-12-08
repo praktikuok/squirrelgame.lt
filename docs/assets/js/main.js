@@ -118,7 +118,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const renderLeaderboard = () => {
+    const leaderboard = config.leaderboard || {};
+    const tbody = document.getElementById('leaderboard-body');
+    if (!tbody) {
+      return;
+    }
+
+    tbody.innerHTML = '';
+    const entries = leaderboard.entries || [];
+    entries.forEach((entry, index) => {
+      const tr = document.createElement('tr');
+      if (index !== entries.length - 1) {
+        tr.className = 'border-b border-subtle';
+      }
+
+      const placeCell = document.createElement('td');
+      placeCell.className = 'px-6 py-4';
+      if (entry.icon) {
+        placeCell.innerHTML = `<i class="${entry.icon} mr-2"></i>${entry.place}`;
+      } else {
+        placeCell.textContent = entry.place;
+      }
+
+      const teamCell = document.createElement('td');
+      teamCell.className = 'px-6 py-4';
+      teamCell.textContent = entry.team || '';
+
+      const pointsCell = document.createElement('td');
+      pointsCell.className = 'px-6 py-4';
+      pointsCell.textContent = entry.points != null ? entry.points : '';
+
+      const timeCell = document.createElement('td');
+      timeCell.className = 'px-6 py-4';
+      timeCell.textContent = entry.time || '';
+
+      tr.append(placeCell, teamCell, pointsCell, timeCell);
+      tbody.appendChild(tr);
+    });
+
+    const noteEl = document.getElementById('leaderboard-note');
+    if (noteEl && leaderboard.note) {
+      noteEl.textContent = leaderboard.note;
+    }
+  };
+
+  const renderTestimonials = () => {
+    const testimonials = config.testimonials || [];
+    const grid = document.getElementById('testimonials-grid');
+    if (!grid) {
+      return;
+    }
+
+    grid.innerHTML = '';
+    testimonials.forEach((item) => {
+      const card = document.createElement('div');
+      card.className = 'bg-white p-6 rounded-lg shadow-md';
+
+      const ratingEl = document.createElement('div');
+      ratingEl.className = 'flex gap-1 text-accent mb-3';
+      const rating = typeof item.rating === 'number' ? item.rating : 5;
+      for (let i = 0; i < 5; i += 1) {
+        const star = document.createElement('i');
+        star.className = `${i < rating ? 'fas' : 'far'} fa-star`;
+        ratingEl.appendChild(star);
+      }
+
+      const quoteEl = document.createElement('p');
+      quoteEl.className = 'text-gray-700 mb-4 italic';
+      quoteEl.textContent = item.quote || '';
+
+      const authorEl = document.createElement('p');
+      authorEl.className = 'font-semibold text-primary';
+      authorEl.textContent = item.author ? `– ${item.author}` : '';
+
+      card.append(ratingEl, quoteEl, authorEl);
+      grid.appendChild(card);
+    });
+  };
+
   updatePrices();
+  renderLeaderboard();
+  renderTestimonials();
 
   const currentYearEl = document.getElementById('current-year');
   if (currentYearEl) {
