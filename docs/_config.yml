@@ -1,0 +1,12 @@
+title: "Lobiai"
+description: "Žaidimo puslapis"
+
+# Use no theme (you have your own HTML/CSS)
+theme: null
+
+# Build output goes into docs/
+destination: docs
+
+# Important: don’t treat docs/ as source
+exclude:
+  - docs

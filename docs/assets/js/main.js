@@ -400,7 +400,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const links = [
     { id: 'game-rules-link', url: config.gameRulesUrl },
-    { id: 'privacy-policy-link', url: config.privacyPolicyUrl },
     { id: 'cookies-policy-link', url: config.cookiesPolicyUrl },
     { id: 'cookies-info-link', url: config.cookiesPolicyUrl },
     { id: 'terms-conditions-link', url: config.termsConditionsUrl }
@@ -412,6 +411,37 @@ document.addEventListener('DOMContentLoaded', () => {
       link.href = url;
     }
   });
+
+  const setActiveFooterLink = () => {
+    let path = window.location.pathname;
+    if (path.length > 1 && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+    if (!path) {
+      path = '/';
+    }
+
+    const map = [
+      { selector: '#footer-home-link', paths: ['/', '/index.html'] },
+      { selector: '#game-rules-link', paths: ['/game-rules', '/game-rules.html'] },
+      { selector: '#cookies-policy-link', paths: ['/cookies', '/cookies.html'] },
+      { selector: '#terms-conditions-link', paths: ['/terms', '/terms.html'] }
+    ];
+
+    const allFooterLinks = document.querySelectorAll('.footer-link');
+    allFooterLinks.forEach((link) => link.classList.remove('footer-link--active'));
+
+    const match = map.find((item) => item.paths.includes(path));
+    if (match) {
+      const el = document.querySelector(match.selector);
+      if (el) {
+        el.classList.add('footer-link--active');
+      }
+    }
+  };
+
+  setActiveFooterLink();
+
 
   const cookieBanner = document.getElementById('cookie-banner');
   const acceptCookiesBtn = document.getElementById('accept-cookies');

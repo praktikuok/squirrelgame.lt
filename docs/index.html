@@ -1,361 +1,250 @@
-<!DOCTYPE html>
-<html lang="lt">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Squirrel Game – Miesto galvosūkių žaidimas Vilniuje</title>
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-
-<body class="bg-white text-gray-800">
-
-  <header class="site-header bg-primary text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4 w-full relative">
-      <div class="flex-1 flex justify-center md:justify-start">
-        <div class="site-logo flex items-center justify-center">
-          <img src="assets/img/squirrel-game-logo-text.svg" alt="Squirrel Game logotipas">
-        </div>
+---
+layout: default
+title: "Atrask miestą"
+---
+<section class="bg-dark-green-gradient text-white py-20 px-4">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-5xl font-bold mb-6">Atrask Vilnių kitaip – spręsk galvosūkius mieste!</h2>
+    <div class="flex-1 flex justify-center">
+      <div class="flex items-center justify-center">
+        <img src="assets/img/squirrel-game-logo-250.png" alt="squirrel game logo full">
       </div>
-      <button id="nav-toggle" type="button" class="nav-toggle md:hidden" aria-controls="site-nav" aria-expanded="false"
-        aria-label="Atidaryti meniu">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Pagrindinis meniu">
-        <ul class="flex flex-col md:flex-row gap-4 md:gap-6 text-sm font-medium">
-          <li><a href="#apie" class="hover:text-secondary transition">Apie žaidimą</a></li>
-          <li><a href="#kainos" class="hover:text-secondary transition">Kainos</a></li>
-          <li><a href="#atsiliepimai" class="hover:text-secondary transition">Atsiliepimai</a></li>
-          <li><a href="#duk" class="hover:text-secondary transition">DUK</a></li>
-          <li><a href="#kontaktai" class="hover:text-secondary transition">Kontaktai</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
-
-  <main class="w-full">
-    <section class="bg-dark-green-gradient text-white py-20 px-4">
-      <div class="max-w-5xl mx-auto text-center">
-        <h2 class="text-5xl font-bold mb-6">Atrask Vilnių kitaip – spręsk galvosūkius mieste!</h2>
-        <div class="flex-1 flex justify-center">
-          <div class="site-logo flex items-center justify-center">
-            <img src="assets/img/squirrel-game-logo-250.png" alt="squirrel game logo full">
-          </div>
-        </div>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">Įdomus nuotykis gryname ore, tobulas draugams, šeimai ar įmonės
-          komandai. Vaikštai, spręsk mįsles ir pažink sostinę naujais rakursais.</p>
-        <div class="flex gap-4 justify-center">
-          <a href="#kainos"
-            class="bg-accent hover:bg-opacity-90 text-white px-8 py-3 rounded-lg font-semibold transition">Pirkti
-            bilietą</a>
-          <a href="#apie"
-            class="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition">Sužinoti
-            daugiau</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="apie" class="py-16 px-4 bg-neutral bg-opacity-20">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-primary text-center mb-12">Apie žaidimą</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="feature-card text-center">
-            <div class="feature-card-icon">
-              <i class="fas fa-map-marked-alt text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-primary mb-3">Tyrinėk miestą</h3>
-            <p class="text-gray-700">Vaikščiok Vilniaus gatvėmis, atrask paslėptus kampelius ir istorines vietas.</p>
-          </div>
-          <div class="feature-card text-center">
-            <div class="feature-card-icon">
-              <i class="fas fa-puzzle-piece text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-primary mb-3">Spręsk mįsles</h3>
-            <p class="text-gray-700">Kiekvienas užduotis – tai galvosūkis, kuris reikalauja dėmesio ir komandinio darbo.
-            </p>
-          </div>
-          <div class="feature-card text-center">
-            <div class="feature-card-icon">
-              <i class="fas fa-users text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-primary mb-3">Žaisk su draugais</h3>
-            <p class="text-gray-700">1–6 žmonių komanda, puikus pasirinkimas bet kokiai progai.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 px-4 bg-light">
-      <div class="max-w-4xl mx-auto">
-        <div class="general-card">
-          <h2 class="text-4xl font-bold text-primary text-center mb-12">Kaip veikia žaidimas?</h2>
-          <div class="space-y-8">
-            <div class="flex gap-6 items-start">
-              <div
-                class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                1</div>
-              <div>
-                <h3 class="text-xl font-semibold text-primary mb-2">Nusipirk bilietą arba dovanų kuponą</h3>
-                <p class="text-gray-700">Rinkis sau tinkamą laiką ir data. Dovanų kuponu gali pasinaudoti bet kada per
-                  metus.</p>
-              </div>
-            </div>
-            <div class="flex gap-6 items-start">
-              <div
-                class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                2</div>
-              <div>
-                <h3 class="text-xl font-semibold text-primary mb-2">Gauk instrukcijas</h3>
-                <p class="text-gray-700">Prieš žaidimą gausi visas reikiamas instrukcijas ir startinius užduotis el.
-                  paštu.</p>
-              </div>
-            </div>
-            <div class="flex gap-6 items-start">
-              <div
-                class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                3</div>
-              <div>
-                <h3 class="text-xl font-semibold text-primary mb-2">Vaikštai ir spręsk</h3>
-                <p class="text-gray-700">Keliauk po Vilnių, spręsk galvosūkius, fotografuok, ieškoki ženklų. Viską
-                  valdysite savo išmaniuoju telefonu.</p>
-              </div>
-            </div>
-            <div class="flex gap-6 items-start">
-              <div
-                class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                4</div>
-              <div>
-                <h3 class="text-xl font-semibold text-primary mb-2">Užbaik ir laimėk</h3>
-                <p class="text-gray-700">Įveikę visus iššūkius pateksite į lyderių lentelę. Geriausios komandos gauna
-                  pripažinimą!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="kainos" class="py-16 px-4 bg-neutral">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-primary text-center mb-12">Kainos ir pasiūlymai</h2>
-
-        <div class="discount-banner"><i class="fas fa-gift"></i> <span>Speciali Šventinė nuolaida su kodu!</span> <span
-            class="discount-code" id="discount-code">KALĖDOS</span>
-        </div>
-        <div class="pricing-grid">
-          <div class="pricing-card" id="card-1">
-            <div class="card-header">
-              <div class="card-icon"><i class="fas fa-ticket"></i>
-              </div>
-              <h3 class="card-title">Bilietas</h3>
-            </div>
-            <div class="price-container">
-              <div class="original-price" id="original-price-1">
-                75.00€
-              </div>
-              <div class="current-price" id="current-price-1">
-                59.99€
-              </div><span class="discount-badge" id="discount-badge-1">Sutaupykite 20%</span>
-            </div>
-            <ul class="features-list">
-              <li><i class="fas fa-envelope"></i> <span>Pristatymas el. paštu</span></li>
-              <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
-              <li><i class="fas fa-calendar-alt"></i> <span>Lankstūs rezervacijos laikai</span></li>
-            </ul><a href="/option" class="select-button">Pasirinkti</a>
-          </div>
-          <div class="pricing-card" id="card-2">
-            <div class="card-header">
-              <div class="card-icon"><i class="fas fa-gift"></i>
-              </div>
-              <h3 class="card-title">Dovanų Kuponas</h3>
-            </div>
-            <div class="price-container">
-              <div class="original-price" id="original-price-2">
-                75.00€
-              </div>
-              <div class="current-price" id="current-price-2">
-                59.99€
-              </div><span class="discount-badge" id="discount-badge-2">Sutaupykite 20%</span>
-            </div>
-            <ul class="features-list">
-              <li><i class="fas fa-gift"></i> <span>Puiki dovana artimiesiems</span></li>
-              <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
-              <li><i class="fas fa-clock"></i> <span>Galioja 12 mėnesių</span></li>
-            </ul><a href="/option" class="select-button">Pasirinkti</a>
-          </div>
-          <div class="pricing-card" id="card-3">
-            <div class="card-header">
-              <div class="card-icon"><i class="fas fa-gifts"></i>
-              </div>
-              <h3 class="card-title">Fizinis Kuponas</h3>
-            </div>
-            <div class="price-container">
-              <div class="original-price" id="original-price-3">
-                90.00€
-              </div>
-              <div class="current-price" id="current-price-3">
-                69.99€
-              </div><span class="discount-badge" id="discount-badge-3">Sutaupykite 22%</span>
-            </div>
-            <ul class="features-list">
-              <li><i class="fas fa-tree"></i> <span>Kalėdinis dizainas + dovanėlė</span></li>
-              <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
-              <li><i class="fas fa-shipping-fast"></i> <span>Nemokamas pristatymas</span></li>
-            </ul><a href="/option" class="select-button">Pasirinkti</a>
-          </div>
-        </div>
-        <div class="game-info">
-          <h2>Pabėgimo Kambario Patirtis</h2>
-          <p><i class="fas fa-puzzle-piece"></i> Spręskite įdomius galvosūkius mieste</p>
-          <p><i class="fas fa-stopwatch"></i> Varžykitės su laiku su savo komanda</p>
-          <p><i class="fas fa-users"></i> Tobula 2-6 žaidėjams</p>
-          <p><i class="fas fa-clock"></i> Trukmė 2-3 valandos</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="lyderiu-lentele" class="bg-light py-16 px-4">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-4xl font-bold text-primary text-center mb-8">Lyderių lentelė</h2>
-        <p class="text-center text-muted mb-12">Pažiūrėk, kaip sekasi kitoms komandoms ir siek geriausio rezultato!</p>
-
-        <div class="bg-surface rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto">
-          <table class="w-full">
-            <thead class="bg-soft">
-              <tr>
-                <th class="px-6 py-4 text-left font-semibold text-primary">Vieta</th>
-                <th class="px-6 py-4 text-left font-semibold text-primary">Komandos pavadinimas</th>
-                <th class="px-6 py-4 text-left font-semibold text-primary">Taškai</th>
-                <th class="px-6 py-4 text-left font-semibold text-primary">Laikas</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-body">
-            </tbody>
-          </table>
-        </div>
-
-        <p id="leaderboard-note" class="text-center text-muted mt-6 text-sm">Duomenys atnaujinami kas savaitę.</p>
-      </div>
-    </section>
-
-    <section id="atsiliepimai" class="py-16 px-4 bg-neutral bg-opacity-20">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-primary text-center mb-4">Ką sako žaidėjai</h2>
-        <p class="text-sm font-bold text-dark-green text-center mb-8">Atsiliepimą galite palikti per 30 dienų po
-          dalyvavimo
-        </p>
-        <div id="testimonials-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-      </div>
-    </section>
-
-    <section id="duk" class="py-16 px-4 bg-white">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-bold text-primary text-center mb-12">Dažniausiai užduodami klausimai</h2>
-        <div id="faq-list" class="space-y-4"></div>
-      </div>
-    </section>
-    <section id="kontaktai" class="py-16 px-4 bg-neutral bg-opacity-20">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold text-primary mb-8">Susisiek su mumis</h2>
-        <p class="text-gray-700 mb-8">Turi klausimų ar pageidavimų? Parašyk mums!</p>
-        <div class="flex flex-col md:flex-row gap-6 justify-center items-stretch">
-          <a class="contact-card" href="mailto:info@squirrelgame.lt">
-            <div class="contact-card-inner">
-              <i class="fas fa-envelope text-2xl"></i>
-              <span class="font-medium">info@squirrelgame.lt</span>
-            </div>
-          </a>
-          <a class="contact-card" href="https://instagram.com/squirrelgame.lt" target="_blank"
-            rel="noopener noreferrer">
-            <div class="contact-card-inner">
-              <i class="fab fa-instagram text-2xl"></i>
-              <span class="font-medium">@squirrelgame.lt</span>
-            </div>
-          </a>
-          <a class="contact-card" href="https://tiktok.com/@squirrelgame.lt" target="_blank" rel="noopener noreferrer">
-            <div class="contact-card-inner">
-              <i class="fab fa-tiktok text-2xl"></i>
-              <span class="font-medium">@squirrelgame.lt</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <button id="newsletter-floating-btn" type="button" class="newsletter-floating-btn">Gauti nuolaidą</button>
-
-  <div id="newsletter-modal-overlay" class="newsletter-modal-overlay" aria-hidden="true">
-    <div class="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-modal-title">
-      <button id="newsletter-close-btn" type="button" class="newsletter-close-btn" aria-label="Uždaryti">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="text-center">
-        <h2 id="newsletter-modal-title" class="text-3xl font-bold text-primary mb-3">Prisijunk prie naujienlaiškio</h2>
-        <p class="text-gray-700">Gauk išskirtinį nuolaidos kodą ir sužinok mūsų naujienas pirmasis.</p>
-      </div>
-      <form id="newsletter-form" class="newsletter-form">
-        <input type="email" id="newsletter-email" required placeholder="Įvesk savo el. paštą" />
-        <button type="submit">Gauti nuolaidą</button>
-      </form>
+    <p class="text-xl mb-8 max-w-2xl mx-auto">Įdomus nuotykis gryname ore, tobulas draugams, šeimai ar įmonės
+      komandai. Vaikštai, spręsk mįsles ir pažink sostinę naujais rakursais.</p>
+    <div class="flex gap-4 justify-center">
+      <a href="#kainos"
+        class="bg-accent hover:bg-opacity-90 text-white px-8 py-3 rounded-lg font-semibold transition">Pirkti
+        bilietą</a>
+      <a href="#apie"
+        class="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition">Sužinoti
+        daugiau</a>
     </div>
   </div>
+</section>
 
-  <footer class="bg-primary text-white py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid md:grid-cols-3 gap-8 mb-8">
-        <div>
-          <h4 class="font-bold text-xl mb-4">Squirrel Game</h4>
-          <p class="text-sm opacity-90">Lauko miesto galvosūkių žaidimas, kuris paverčia tavo komandą tikrais miesto
-            tyrinėtojais.</p>
+<section id="apie" class="py-16 px-4 bg-neutral bg-opacity-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-primary text-center mb-12">Apie žaidimą</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="feature-card text-center">
+        <div class="feature-card-icon">
+          <i class="fas fa-map-marked-alt text-2xl"></i>
         </div>
-        <div>
-          <h4 class="font-bold text-xl mb-4">Dokumentai</h4>
-          <ul class="space-y-2 text-sm opacity-90">
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="game-rules-link">Žaidimo taisyklės</a></li>
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="privacy-policy-link">Privatumo politika</a>
-            </li>
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="cookies-policy-link">Slapukų politika</a>
-            </li>
-            <li><a href="#" class="hover:opacity-100 transition-opacity" id="terms-conditions-link">Taisyklės ir
-                sąlygos</a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-xl mb-4">Kur vyksta?</h4>
-          <p class="text-sm opacity-90 mb-2">Šiuo metu žaidimas vyksta Vilniuje.</p>
-          <p class="text-sm opacity-75">Jau planuojame plėstis į kitus Lietuvos miestus – sek naujienas!</p>
-        </div>
+        <h3 class="text-xl font-semibold text-primary mb-3">Tyrinėk miestą</h3>
+        <p class="text-gray-700">Vaikščiok Vilniaus gatvėmis, atrask paslėptus kampelius ir istorines vietas.</p>
       </div>
-      <div class="border-t border-white border-opacity-20 pt-8 text-center">
-        <p class="text-sm opacity-75">&copy; <span id="current-year"></span> Squirrel Game. Visos teisės saugomos.
+      <div class="feature-card text-center">
+        <div class="feature-card-icon">
+          <i class="fas fa-puzzle-piece text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-primary mb-3">Spręsk mįsles</h3>
+        <p class="text-gray-700">Kiekvienas užduotis – tai galvosūkis, kuris reikalauja dėmesio ir komandinio darbo.
         </p>
       </div>
-    </div>
-  </footer>
-
-  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-primary text-white p-4 shadow-lg z-50">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm">Šis tinklalapis naudoja slapukus, kad užtikrintų geriausią patirtį. Tęsdamas naršymą, sutinki
-        su slapukų naudojimu.</p>
-      <div class="flex gap-3">
-        <button id="accept-cookies"
-          class="bg-accent hover:bg-opacity-90 text-white px-6 py-2 rounded-lg font-semibold transition">Sutinku</button>
-        <a href="#" id="cookies-info-link"
-          class="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-6 py-2 rounded-lg font-semibold transition">Daugiau
-          informacijos</a>
+      <div class="feature-card text-center">
+        <div class="feature-card-icon">
+          <i class="fas fa-users text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-primary mb-3">Žaisk su draugais</h3>
+        <p class="text-gray-700">1–6 žmonių komanda, puikus pasirinkimas bet kokiai progai.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/main.js"></script>
+<section class="py-16 px-4 bg-light">
+  <div class="max-w-4xl mx-auto">
+    <div class="general-card">
+      <h2 class="text-4xl font-bold text-primary text-center mb-12">Kaip veikia žaidimas?</h2>
+      <div class="space-y-8">
+        <div class="flex gap-6 items-start">
+          <div
+            class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+            1</div>
+          <div>
+            <h3 class="text-xl font-semibold text-primary mb-2">Nusipirk bilietą arba dovanų kuponą</h3>
+            <p class="text-gray-700">Rinkis sau tinkamą laiką ir data. Dovanų kuponu gali pasinaudoti bet kada per
+              metus.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div
+            class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+            2</div>
+          <div>
+            <h3 class="text-xl font-semibold text-primary mb-2">Gauk instrukcijas</h3>
+            <p class="text-gray-700">Prieš žaidimą gausi visas reikiamas instrukcijas ir startinius užduotis el.
+              paštu.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div
+            class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+            3</div>
+          <div>
+            <h3 class="text-xl font-semibold text-primary mb-2">Vaikštai ir spręsk</h3>
+            <p class="text-gray-700">Keliauk po Vilnių, spręsk galvosūkius, fotografuok, ieškoki ženklų. Viską
+              valdysite savo išmaniuoju telefonu.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div
+            class="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+            4</div>
+          <div>
+            <h3 class="text-xl font-semibold text-primary mb-2">Užbaik ir laimėk</h3>
+            <p class="text-gray-700">Įveikę visus iššūkius pateksite į lyderių lentelę. Geriausios komandos gauna
+              pripažinimą!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</body>
+<section id="kainos" class="py-16 px-4 bg-neutral">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-primary text-center mb-12">Kainos ir pasiūlymai</h2>
 
-</html>
+    <div class="discount-banner"><i class="fas fa-gift"></i> <span>Speciali Šventinė nuolaida su kodu!</span> <span
+        class="discount-code" id="discount-code">KALĖDOS</span>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card" id="card-1">
+        <div class="card-header">
+          <div class="card-icon"><i class="fas fa-ticket"></i>
+          </div>
+          <h3 class="card-title">Bilietas</h3>
+        </div>
+        <div class="price-container">
+          <div class="original-price" id="original-price-1">
+            75.00€
+          </div>
+          <div class="current-price" id="current-price-1">
+            59.99€
+          </div><span class="discount-badge" id="discount-badge-1">Sutaupykite 20%</span>
+        </div>
+        <ul class="features-list">
+          <li><i class="fas fa-envelope"></i> <span>Pristatymas el. paštu</span></li>
+          <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
+          <li><i class="fas fa-calendar-alt"></i> <span>Lankstūs rezervacijos laikai</span></li>
+        </ul><a href="/option" class="select-button">Pasirinkti</a>
+      </div>
+      <div class="pricing-card" id="card-2">
+        <div class="card-header">
+          <div class="card-icon"><i class="fas fa-gift"></i>
+          </div>
+          <h3 class="card-title">Dovanų Kuponas</h3>
+        </div>
+        <div class="price-container">
+          <div class="original-price" id="original-price-2">
+            75.00€
+          </div>
+          <div class="current-price" id="current-price-2">
+            59.99€
+          </div><span class="discount-badge" id="discount-badge-2">Sutaupykite 20%</span>
+        </div>
+        <ul class="features-list">
+          <li><i class="fas fa-gift"></i> <span>Puiki dovana artimiesiems</span></li>
+          <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
+          <li><i class="fas fa-clock"></i> <span>Galioja 12 mėnesių</span></li>
+        </ul><a href="/option" class="select-button">Pasirinkti</a>
+      </div>
+      <div class="pricing-card" id="card-3">
+        <div class="card-header">
+          <div class="card-icon"><i class="fas fa-gifts"></i>
+          </div>
+          <h3 class="card-title">Fizinis Kuponas</h3>
+        </div>
+        <div class="price-container">
+          <div class="original-price" id="original-price-3">
+            90.00€
+          </div>
+          <div class="current-price" id="current-price-3">
+            69.99€
+          </div><span class="discount-badge" id="discount-badge-3">Sutaupykite 22%</span>
+        </div>
+        <ul class="features-list">
+          <li><i class="fas fa-tree"></i> <span>Kalėdinis dizainas + dovanėlė</span></li>
+          <li><i class="fas fa-users"></i> <span>2-6 žaidėjams</span></li>
+          <li><i class="fas fa-shipping-fast"></i> <span>Nemokamas pristatymas</span></li>
+        </ul><a href="/option" class="select-button">Pasirinkti</a>
+      </div>
+    </div>
+    <div class="game-info">
+      <h2>Pabėgimo Kambario Patirtis</h2>
+      <p><i class="fas fa-puzzle-piece"></i> Spręskite įdomius galvosūkius mieste</p>
+      <p><i class="fas fa-stopwatch"></i> Varžykitės su laiku su savo komanda</p>
+      <p><i class="fas fa-users"></i> Tobula 2-6 žaidėjams</p>
+      <p><i class="fas fa-clock"></i> Trukmė 2-3 valandos</p>
+    </div>
+  </div>
+</section>
+
+<section id="lyderiu-lentele" class="bg-light py-16 px-4">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-primary text-center mb-8">Lyderių lentelė</h2>
+    <p class="text-center text-muted mb-12">Pažiūrėk, kaip sekasi kitoms komandoms ir siek geriausio rezultato!</p>
+
+    <div class="bg-surface rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto">
+      <table class="w-full">
+        <thead class="bg-soft">
+          <tr>
+            <th class="px-6 py-4 text-left font-semibold text-primary">Vieta</th>
+            <th class="px-6 py-4 text-left font-semibold text-primary">Komandos pavadinimas</th>
+            <th class="px-6 py-4 text-left font-semibold text-primary">Taškai</th>
+            <th class="px-6 py-4 text-left font-semibold text-primary">Laikas</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+        </tbody>
+      </table>
+    </div>
+
+    <p id="leaderboard-note" class="text-center text-muted mt-6 text-sm">Duomenys atnaujinami kas savaitę.</p>
+  </div>
+</section>
+
+<section id="atsiliepimai" class="py-16 px-4 bg-neutral bg-opacity-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-primary text-center mb-4">Ką sako žaidėjai</h2>
+    <p class="text-sm font-bold text-dark-green text-center mb-8">Atsiliepimą galite palikti per 30 dienų po
+      dalyvavimo
+    </p>
+    <div id="testimonials-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </div>
+</section>
+
+<section id="duk" class="py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl font-bold text-primary text-center mb-12">Dažniausiai užduodami klausimai</h2>
+    <div id="faq-list" class="space-y-4"></div>
+  </div>
+</section>
+<section id="kontaktai" class="py-16 px-4 bg-neutral bg-opacity-20">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-4xl font-bold text-primary mb-8">Susisiek su mumis</h2>
+    <p class="text-gray-700 mb-8">Turi klausimų ar pageidavimų? Parašyk mums!</p>
+    <div class="flex flex-col md:flex-row gap-6 justify-center items-stretch">
+      <a class="contact-card" href="mailto:info@squirrelgame.lt">
+        <div class="contact-card-inner">
+          <i class="fas fa-envelope text-2xl"></i>
+          <span class="font-medium">info@squirrelgame.lt</span>
+        </div>
+      </a>
+      <a class="contact-card" href="https://instagram.com/squirrelgame.lt" target="_blank" rel="noopener noreferrer">
+        <div class="contact-card-inner">
+          <i class="fab fa-instagram text-2xl"></i>
+          <span class="font-medium">@squirrelgame.lt</span>
+        </div>
+      </a>
+      <a class="contact-card" href="https://tiktok.com/@squirrelgame.lt" target="_blank" rel="noopener noreferrer">
+        <div class="contact-card-inner">
+          <i class="fab fa-tiktok text-2xl"></i>
+          <span class="font-medium">@squirrelgame.lt</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

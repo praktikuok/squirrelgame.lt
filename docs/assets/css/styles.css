@@ -8,8 +8,27 @@
   --color-light-green: #4ba68a;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   box-sizing: border-box;
+}
+
+#main-body {
+  min-height: 100vh;
+  /* full viewport height */
+  display: flex;
+  /* turn into flex container */
+  flex-direction: column;
+  /* stack header, main, footer vertically */
+}
+
+#main-body>main {
+  flex: 1;
+  /* grow to fill space between header & footer */
 }
 
 .bg-primary {
@@ -561,6 +580,14 @@ body {
 
 .game-info i {
   color: var(--color-light-green);
+}
+
+.footer-link {
+  font-weight: 400;
+}
+
+.footer-link--active {
+  font-weight: 700;
 }
 
 @media (max-width: 640px) {

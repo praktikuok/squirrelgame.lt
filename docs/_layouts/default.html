@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }} – {{ site.title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body id="main-body" class="bg-light text-gray-800">
+  {% include header.html %}
+
+  <main class="w-full">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+  {% include cookies_banner.html %}
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
