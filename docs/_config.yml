@@ -1,4 +1,4 @@
-title: "Lobiai"
+title: "SquirrelGame.lt"
 description: "Žaidimo puslapis"
 
 # Use no theme (you have your own HTML/CSS)
@@ -10,3 +10,6 @@ destination: docs
 # Important: don’t treat docs/ as source
 exclude:
   - docs
+  - Readme.md
+  - Gemfile
+  - Gemfile.lock

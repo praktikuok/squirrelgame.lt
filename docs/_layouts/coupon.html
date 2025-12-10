@@ -4,24 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <title>{{ page.title }} – {{ site.title }}</title>
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
+  {% if page.stylesheets %}
+  <link rel="stylesheet" href="{{ '/assets/css/coupon-' | append: page.stylesheets | append: '.css' | relative_url }}">
+  {% endif %}
 </head>
 
-<body id="main-body" class="bg-light text-gray-800">
-  {% include header.html %}
-
-  <main class="w-full">
-    {{ content }}
-  </main>
-
-  {% include footer.html %}
-  {% include cookies_banner.html %}
-  <script src="{{ '/assets/js/config.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+<body>
+  {{ content }}
+  <script src="{{ '/assets/js/coupon.js' | relative_url }}"></script>
 </body>
 
 </html>
