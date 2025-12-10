@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Kaip vyksta žaidimas – SquirrelGame.lt</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body id="main-body" class="bg-light text-gray-800">
+  <header class="site-header bg-primary text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4 w-full relative">
+    <div class="flex-1 flex justify-center md:justify-start">
+      <a href="/" class="site-logo flex items-center justify-center">
+        <img src="assets/img/squirrel-game-logo-text.svg" alt="Squirrel Game logotipas">
+      </a>
+    </div>
+    <button id="nav-toggle" type="button" class="nav-toggle md:hidden" aria-controls="site-nav" aria-expanded="false"
+      aria-label="Atidaryti meniu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Pagrindinis meniu">
+      <ul class="flex flex-col md:flex-row gap-4 md:gap-6 text-sm font-medium">
+        <li><a href="/#apie" class="hover:text-secondary transition">Apie žaidimą</a></li>
+        <li><a href="/#kainos" class="hover:text-secondary transition">Kainos</a></li>
+        <li><a href="/#atsiliepimai" class="hover:text-secondary transition">Atsiliepimai</a></li>
+        <li><a href="/#duk" class="hover:text-secondary transition">DUK</a></li>
+        <li><a href="/#kontaktai" class="hover:text-secondary transition">Kontaktai</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main class="w-full">
+    <section class="py-16 px-4 bg-light">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-primary mb-6">Slapukai</h1>
+    <p class="text-gray-700">
+      Čia bus pateikta informacija kaip vyksta zaidimas
+    </p>
+  </div>
+</section>
+  </main>
+
+  <footer class="bg-primary text-white py-12 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h4 class="font-bold text-xl mb-4">Squirrel Game</h4>
+        <p class="text-sm opacity-90">Lauko miesto galvosūkių žaidimas, kuris paverčia tavo komandą tikrais miesto
+          tyrinėtojais.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-xl mb-4">Dokumentai</h4>
+        <ul class="space-y-2 text-sm opacity-90">
+          <li>
+            <a href="/" class="hover:opacity-100 transition-opacity footer-link" id="footer-home-link">
+              Pagrindinis
+            </a>
+          </li>
+          <li>
+            <a href="/game-rules.html" class="hover:opacity-100 transition-opacity footer-link" id="game-rules-link">
+              Žaidimo taisyklės
+            </a>
+          </li>
+          <li>
+            <a href="/cookies.html" class="hover:opacity-100 transition-opacity footer-link" id="cookies-policy-link">
+              Slapukų politika
+            </a>
+          </li>
+          <li>
+            <a href="/terms.html" class="hover:opacity-100 transition-opacity footer-link" id="terms-conditions-link">
+              Taisyklės ir sąlygos
+            </a>
+          </li>
+        </ul>
+
+      </div>
+      <div>
+        <h4 class="font-bold text-xl mb-4">Kur vyksta?</h4>
+        <p class="text-sm opacity-90 mb-2">Šiuo metu žaidimas vyksta Vilniuje.</p>
+        <p class="text-sm opacity-75">Jau planuojame plėstis į kitus Lietuvos miestus – sek naujienas!</p>
+      </div>
+    </div>
+    <div class="border-t border-white border-opacity-20 pt-8 text-center">
+      <p class="text-sm opacity-75">&copy; <span id="current-year"></span> Squirrel Game. Visos teisės saugomos.
+      </p>
+    </div>
+  </div>
+</footer>
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-primary text-white p-4 shadow-lg z-50">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-sm">Šis tinklalapis naudoja slapukus, kad užtikrintų geriausią patirtį. Tęsdamas naršymą, sutinki
+      su slapukų naudojimu.</p>
+    <div class="flex gap-3">
+      <button id="accept-cookies"
+        class="bg-accent hover:bg-opacity-90 text-white px-6 py-2 rounded-lg font-semibold transition">Sutinku</button>
+      <a href="/cookies" id="cookies-info-link"
+        class="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-6 py-2 rounded-lg font-semibold transition">Daugiau
+        informacijos</a>
+    </div>
+  </div>
+</div>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
