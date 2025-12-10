@@ -348,7 +348,7 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-card a {
+.contact-card-inner {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -360,9 +360,6 @@ body {
   transform: translateY(-6px);
   box-shadow: 0 35px 55px rgba(5, 28, 31, 0.2);
   background: rgba(255, 255, 255, 0.95);
-}
-
-.contact-card:hover a {
   color: var(--color-dark-green);
 }
 
