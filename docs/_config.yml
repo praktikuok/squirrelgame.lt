@@ -9,7 +9,10 @@ destination: docs
 
 # Important: don’t treat docs/ as source
 exclude:
+  - previous-versions
   - docs
   - Readme.md
+  - .gitignore
   - Gemfile
   - Gemfile.lock
+  - todo.md
