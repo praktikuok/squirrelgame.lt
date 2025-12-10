@@ -12,15 +12,19 @@
 
 <body class="bg-white text-gray-800">
 
-  <header class="bg-primary text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="w-[210px] h-[150px] rounded-lg flex items-center justify-center">
-          <img src="assets/img/squirrel-game-logo-text.svg" alt="squirrel game logo">
+  <header class="site-header bg-primary text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4 w-full relative">
+      <div class="flex-1 flex justify-center md:justify-start">
+        <div class="site-logo flex items-center justify-center">
+          <img src="assets/img/squirrel-game-logo-text.svg" alt="Squirrel Game logotipas">
         </div>
       </div>
-      <nav>
-        <ul class="flex gap-6 text-sm font-medium">
+      <button id="nav-toggle" type="button" class="nav-toggle md:hidden" aria-controls="site-nav" aria-expanded="false"
+        aria-label="Atidaryti meniu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Pagrindinis meniu">
+        <ul class="flex flex-col md:flex-row gap-4 md:gap-6 text-sm font-medium">
           <li><a href="#apie" class="hover:text-secondary transition">Apie žaidimą</a></li>
           <li><a href="#kainos" class="hover:text-secondary transition">Kainos</a></li>
           <li><a href="#atsiliepimai" class="hover:text-secondary transition">Atsiliepimai</a></li>
@@ -35,7 +39,11 @@
     <section class="bg-dark-green-gradient text-white py-20 px-4">
       <div class="max-w-5xl mx-auto text-center">
         <h2 class="text-5xl font-bold mb-6">Atrask Vilnių kitaip – spręsk galvosūkius mieste!</h2>
-        <img src="assets/img/squirrel-game-logo-250.png" alt="squirrel game logo full">
+        <div class="flex-1 flex justify-center">
+          <div class="site-logo flex items-center justify-center">
+            <img src="assets/img/squirrel-game-logo-250.png" alt="squirrel game logo full">
+          </div>
+        </div>
         <p class="text-xl mb-8 max-w-2xl mx-auto">Įdomus nuotykis gryname ore, tobulas draugams, šeimai ar įmonės
           komandai. Vaikštai, spręsk mįsles ir pažink sostinę naujais rakursais.</p>
         <div class="flex gap-4 justify-center">

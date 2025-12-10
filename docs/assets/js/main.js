@@ -248,6 +248,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const initNavigation = () => {
+    const navToggle = document.getElementById('nav-toggle');
+    const siteNav = document.getElementById('site-nav');
+    if (!navToggle || !siteNav) {
+      return;
+    }
+
+    const closeNav = () => {
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    navToggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeNav();
+      } else {
+        siteNav.classList.add('open');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!siteNav.contains(event.target) && event.target !== navToggle) {
+        closeNav();
+      }
+    });
+
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeNav);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        siteNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+
   const newsletterConfig = config.newsletterModal || {};
   const overlay = document.getElementById('newsletter-modal-overlay');
   const floatingBtn = document.getElementById('newsletter-floating-btn');
@@ -350,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderLeaderboard();
   renderTestimonials();
   renderFaq();
+  initNavigation();
 
   const currentYearEl = document.getElementById('current-year');
   if (currentYearEl) {
