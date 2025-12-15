@@ -58,7 +58,7 @@ body,
   text-align: center;
   position: relative;
   /* red gradient header */
-  background: linear-gradient(135deg, #7b3939 0%, #b43737 100%);
+  background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);
   color: var(--primary-color);
   font-family: var(--font-family-base);
   overflow: hidden;
@@ -185,7 +185,7 @@ body,
   border-radius: 12px;
   margin-top: 1rem;
   /* red gradient code area */
-  background: linear-gradient(165deg, #973b3c 0%, #ff6467 100%);
+  background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
   position: relative;
   overflow: hidden;
 }

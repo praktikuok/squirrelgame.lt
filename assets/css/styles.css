@@ -51,6 +51,10 @@ body {
   background-color: var(--color-dark-green);
 }
 
+.bg-light-green {
+  background-color: var(--color-light-green);
+}
+
 .bg-light {
   background-color: var(--color-light-bg);
 }
@@ -69,6 +73,10 @@ body {
 
 .text-accent {
   color: var(--color-accent);
+}
+
+.text-light {
+  color: var(--color-light-bg);
 }
 
 .text-neutral {
@@ -243,6 +251,17 @@ body {
 
 .discount-banner i {
   font-size: 24px;
+}
+
+.discount-code-card {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 2px;
+  /* background: var(--color-primary);
+  color: var(--color-secondary); */
 }
 
 .discount-code {
@@ -448,6 +467,52 @@ body {
   box-shadow: 0 35px 55px rgba(5, 28, 31, 0.2);
   background: rgba(255, 255, 255, 0.95);
   color: var(--color-dark-green);
+}
+
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-track {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--color-neutral);
+  transition: background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+.toggle-input:checked+.toggle-track {
+  background: var(--color-accent);
+}
+
+.toggle-input:checked+.toggle-track .toggle-thumb {
+  transform: translateX(24px);
+}
+
+.toggle-text {
+  color: var(--color-primary);
 }
 
 .newsletter-floating-btn {

@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="lt">
+---
+layout: coupon
+title: "Kuponas"
+stylesheets: "regular"
+---
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Kuponas – SquirrelGame.lt</title>
-
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <link rel="stylesheet" href="/assets/css/coupon-regular.css">
-  
-</head>
-
-<body>
-  <div class="voucher-wrapper">
+<div class="voucher-wrapper">
   <div class="voucher-container">
     <i class="fas fa-gift decorative-pattern pattern-top"></i>
     <i class="fas fa-tree decorative-pattern pattern-bottom"></i>
@@ -24,7 +13,7 @@
     <div class="voucher-header">
       <div class="logo-container">
         <div class="logo" id="logo">
-          <img src="/assets/img/squirrel-game-logo-250.png" alt="squirrel game logo full">
+          <img src="{{ '/assets/img/squirrel-game-logo-250.png' | relative_url }}" alt="squirrel game logo full">
         </div>
       </div>
       <h1 class="voucher-title" id="voucherTitle">"Squirrel Game" Kuponas</h1>
@@ -88,7 +77,3 @@
     </div>
   </div>
 </div>
-  <script src="/assets/js/coupon.js"></script>
-</body>
-
-</html>

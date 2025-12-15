@@ -71,7 +71,7 @@ window.SQUIRREL_GAME_CONFIG = Object.freeze({
       { place: 2, team: 'Miesto tyrinėtojai', points: 890, time: '2:28', icon: 'fas fa-medal text-gray-400' },
       { place: 3, team: 'Galvosūkių karaliai', points: 860, time: '2:34', icon: 'fas fa-medal text-orange-600' },
       { place: 4, team: 'Nuotykių ieškotojai', points: 830, time: '2:41' },
-      { place: 5, team: 'Drąsuoliai', points: 805, time: '2:47' }
+      { place: 5, team: 'Pirmi', points: 805, time: '2:47' }
     ]
   },
   testimonials: [
@@ -99,7 +99,7 @@ window.SQUIRREL_GAME_CONFIG = Object.freeze({
   faq: [
     {
       question: 'Kiek žmonių gali dalyvauti?',
-      answer: 'Komandoje gali būti nuo 1 iki 6 dalyvių. Rekomenduojame 3–5 žmonių komandą – taip yra įdomiausia ir efektyviausia.'
+      answer: 'Komandoje gali būti nuo 1 iki 6 dalyvių. Rekomenduojame 2–6 žmones komandoje.'
     },
     {
       question: 'Ar galima žaisti lietingą dieną?',
@@ -107,19 +107,19 @@ window.SQUIRREL_GAME_CONFIG = Object.freeze({
     },
     {
       question: 'Ar tinka vaikams?',
-      answer: 'Žaidimas tinkamas visai šeimai. Rekomenduojame vaikams nuo 10 metų, tačiau jaunesni vaikai taip pat gali dalyvauti kartu su suaugusiaisiais.'
+      answer: 'Žaidimas tinkamas visai šeimai. Jaunesni nei 16 metų vaikai gali dalyvauti tik su suaugusiųjų priežiūra.'
     },
     {
       question: 'Kokia kalba vyksta žaidimas?',
-      answer: 'Šiuo metu žaidimas prieinamas tik lietuvių kalba. Planuojame pridėti anglų kalbą artimiausiu metu.'
+      answer: 'Šiuo metu žaidimas vyksta lietuvių kalba.'
     },
     {
-      question: 'Ką reikia atsinešti?',
-      answer: 'Prireiks tik vieno išmaniojo telefono su interneto ryšiu ir įkrautu akumuliatoriumi. Taip pat rekomenduojame patogius batus vaikščiojimui.'
+      question: 'Kaip pasiruošti žaidimui?',
+      answer: 'Prireiks bent vieno išmaniojo telefono su interneto ryšiu ir įkrautu akumuliatoriumi. Taip pat rekomenduojame patogius batus vaikščiojimui.'
     },
     {
-      question: 'Ar galiu atšaukti bilietą?',
-      answer: 'Taip, bilietus galima atšaukti arba perkelti į kitą datą ne vėliau kaip 48 valandas iki žaidimo pradžios. Smulkiau apie tai skaityk mūsų taisyklėse.'
+      question: 'Ar galiu grąžinti bilietą?',
+      answer: 'Ne, bilietų grąžinti negalima, tačiau galima pakeisti žaidimo datą, bet ne vėliau nei iki bilieto/kupono galiojimo pabaigos. Apie keičiamą datą privaloma informuoti ne vėliau kaip 48 valandas iki numatytos žaidimo pradžios.'
     }
   ],
   newsletterModal: {
