@@ -289,6 +289,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const initCookiePreferences = () => {
+    const form = document.getElementById('cookie-preferences-form');
+    if (!form) {
+      return;
+    }
+
+    const analyticsCheckbox = document.getElementById('analytics-cookies');
+    const messageEl = document.getElementById('cookie-update-message');
+
+    if (analyticsCheckbox) {
+      analyticsCheckbox.checked = safeGetStorage('cookiesAccepted') === 'true';
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (analyticsCheckbox) {
+        safeSetStorage('cookiesAccepted', analyticsCheckbox.checked ? 'true' : 'false');
+      }
+      if (messageEl) {
+        messageEl.classList.remove('hidden');
+        messageEl.textContent = 'Nustatymai išsaugoti.';
+        setTimeout(() => messageEl.classList.add('hidden'), 3000);
+      }
+    });
+  };
+
   const newsletterConfig = config.newsletterModal || {};
   const overlay = document.getElementById('newsletter-modal-overlay');
   const floatingBtn = document.getElementById('newsletter-floating-btn');
@@ -391,6 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderLeaderboard();
   renderTestimonials();
   renderFaq();
+  initCookiePreferences();
   initNavigation();
 
   const currentYearEl = document.getElementById('current-year');
