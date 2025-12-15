@@ -6,7 +6,7 @@
   <title>Kaip vyksta žaidimas – SquirrelGame.lt</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/tailwind-3-4-17.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 </head>
@@ -217,31 +217,25 @@
         </div>
       </div>
     </div>
-  </div>
-  </div>
-</section>
-<section class="py-16 pt-4 bg-light">
-  <div class="max-w-4xl mx-auto">
-    <p class="text-gray-700 mb-6">
-      Čia gali peržiūrėti ir atnaujinti savo slapukų pasirinkimus.
-    </p>
-
-    <form id="cookie-preferences-form" class="space-y-4">
-      <label for="analytics-cookies" class="toggle text-gray-700">
-        <input type="checkbox" id="analytics-cookies" class="toggle-input" />
-        <span class="toggle-track" aria-hidden="true">
-          <span class="toggle-thumb"></span>
-        </span>
-        <span class="toggle-text">Leisti analitinius slapukus</span>
-      </label>
-      <div>
-        <button type="submit"
-          class="bg-light-green text-light px-6 py-3 rounded-lg font-semibold transition hover:bg-accent hover:text-white">
-          Atnaujinti nustatymus
-        </button>
-      </div>
-      <p id="cookie-update-message" class="text-sm text-primary hidden">Nustatymai išsaugoti.</p>
-    </form>
+    <div class="rounded-2xl bg-white shadow-sm border border-gray-100 p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">8.Peržiūrėti ir atnaujinti slapukų pasirinkimus.</h2>
+      <form id="cookie-preferences-form" class="space-y-4">
+        <label for="analytics-cookies" class="toggle text-gray-700">
+          <input type="checkbox" id="analytics-cookies" class="toggle-input" />
+          <span class="toggle-track" aria-hidden="true">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span class="toggle-text">Leisti slapukus</span>
+        </label>
+        <div>
+          <button type="submit"
+            class="bg-light-green text-light px-6 py-3 rounded-lg font-semibold transition hover:bg-accent hover:text-white">
+            Atnaujinti nustatymus
+          </button>
+        </div>
+        <p id="cookie-update-message" class="text-sm text-primary hidden">Nustatymai išsaugoti.</p>
+      </form>
+    </div>
   </div>
 </section>
   </main>
