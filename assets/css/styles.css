@@ -5,12 +5,18 @@
   --color-neutral: #DAF7DC;
   --color-dark-green: #357266;
   --color-light-bg: #fafafa;
+  --color-white: #fff;
   --color-light-green: #4ba68a;
 }
 
 html,
 body {
   height: 100%;
+}
+
+/* Helps anchor links (/#apie etc.) account for the fixed header height */
+html {
+  scroll-padding-top: var(--header-height, 88px);
 }
 
 body {
@@ -24,6 +30,9 @@ body {
   /* turn into flex container */
   flex-direction: column;
   /* stack header, main, footer vertically */
+
+  /* Make room for the fixed header */
+  padding-top: var(--header-height, 88px);
 }
 
 #main-body>main {
@@ -127,7 +136,7 @@ body {
   height: 4.5rem;
   border-radius: 9999px;
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,7 +144,7 @@ body {
 }
 
 .general-card {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 1.25rem;
   padding: 1.5rem;
   border: 1px solid rgba(14, 59, 67, 0.08);
@@ -149,13 +158,16 @@ body {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 500;
 }
 
 .site-logo img {
-  max-width: 150px;
+  max-width: 80px;
   width: 100%;
   height: auto;
 }
@@ -166,7 +178,7 @@ body {
   padding: 0.4rem 0.7rem;
   font-size: 1.25rem;
   background: transparent;
-  color: #fff;
+  color: var(--color-white);
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -195,10 +207,20 @@ body {
   padding: 0.35rem 0;
 }
 
+.site-nav ul {
+  /* Scales up menu text on larger screens */
+  font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1.25rem);
+}
+
 @media (min-width: 768px) {
   .nav-toggle {
     display: none;
   }
+
+  .site-logo img {
+    max-width: 150px;
+  }
+
 
   .site-nav {
     position: static;
@@ -215,7 +237,7 @@ body {
 }
 
 .bg-surface {
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .bg-surface-muted {
@@ -404,18 +426,21 @@ body {
 
 .select-button {
   display: block;
-  width: 100%;
+  font-weight: 600;
   padding: 16px 32px;
   border: none;
   border-radius: 12px;
-  font-size: 18px;
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   text-decoration: none;
   text-align: center;
+}
+
+.button-card {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 18px;
+  width: 100%;
 }
 
 .select-button:hover {
@@ -423,19 +448,26 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-#card-1 .select-button {
+.button-primary {
   background: var(--color-primary);
   color: var(--color-neutral);
 }
 
-#card-2 .select-button {
+.button-green {
   background: var(--color-light-green);
   color: var(--color-light-bg);
 }
 
-#card-3 .select-button {
+.button-accent {
   background: var(--color-accent);
-  color: var(--color-light-bg);
+  color: var(--color-white);
+}
+
+.button-transparent {
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--color-white);
+  color: var(--color-white);
 }
 
 .faq-toggle:hover {
@@ -443,7 +475,7 @@ body {
 }
 
 .contact-card {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 1.25rem;
   padding: 1.25rem 1.5rem;
   box-shadow: 0 15px 30px rgba(5, 28, 31, 0.12);
@@ -499,7 +531,7 @@ body {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--color-white);
   transition: transform 0.2s ease;
 }
 
@@ -522,7 +554,7 @@ body {
   padding: 0.85rem 1.5rem;
   border-radius: 999px;
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-white);
   font-weight: 600;
   box-shadow: 0 15px 35px rgba(244, 162, 89, 0.35);
   border: none;
@@ -574,7 +606,7 @@ body {
 }
 
 .newsletter-modal {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 1.5rem;
   padding: 2rem;
   width: min(90%, 500px);
@@ -609,7 +641,7 @@ body {
 
 .newsletter-form button {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-white);
   border: none;
   border-radius: 0.75rem;
   padding: 0.85rem 1rem;

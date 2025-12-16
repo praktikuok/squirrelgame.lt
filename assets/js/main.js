@@ -2,6 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const config = window.SQUIRREL_GAME_CONFIG || {};
   const DAY_MS = 24 * 60 * 60 * 1000;
 
+  // Keep CSS --header-height in sync (used for the fixed header + anchor offsets)
+  const syncHeaderHeight = () => {
+    const header = document.querySelector('.site-header');
+    if (!header) {
+      return;
+    }
+    document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+  };
+
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+  window.addEventListener('load', syncHeaderHeight);
+
   const formatEuro = (value) => (typeof value === 'number'
     ? `${value.toLocaleString('lt-LT', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} €`
     : '');
@@ -277,9 +290,97 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    siteNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeNav);
+    const normalizePath = (value) => {
+      if (!value) {
+        return '/';
+      }
+      let path = value;
+      if (path.length > 1 && path.endsWith('/')) {
+        path = path.slice(0, -1);
+      }
+      if (path === '' || path === '/index.html') {
+        return '/';
+      }
+      return path;
+    };
+
+    const getHeaderOffset = () => {
+      const header = document.querySelector('.site-header');
+      if (!header) {
+        return 0;
+      }
+      const position = window.getComputedStyle(header).position;
+      if (position !== 'fixed' && position !== 'sticky') {
+        return 0;
+      }
+      return header.getBoundingClientRect().height;
+    };
+
+    const scrollToHash = (hash, behavior = 'smooth') => {
+      const raw = (hash || '').replace('#', '');
+      if (!raw) {
+        return false;
+      }
+
+      const targetId = decodeURIComponent(raw);
+      const target = document.getElementById(targetId);
+      if (!target) {
+        return false;
+      }
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const scrollBehavior = prefersReducedMotion ? 'auto' : behavior;
+
+      const offset = getHeaderOffset();
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset - 8;
+
+      window.scrollTo({ top: Math.max(top, 0), behavior: scrollBehavior });
+      return true;
+    };
+
+    document.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href') || '';
+        // Only intercept same-page hash links (e.g. "#kainos" or "/#kainos")
+        if (!href.includes('#')) {
+          closeNav();
+          return;
+        }
+
+        let url;
+        try {
+          url = new URL(href, window.location.href);
+        } catch (error) {
+          closeNav();
+          return;
+        }
+
+        const sameOrigin = url.origin === window.location.origin;
+        const samePath = normalizePath(url.pathname) === normalizePath(window.location.pathname);
+
+        if (sameOrigin && samePath && url.hash) {
+          const didScroll = scrollToHash(url.hash, 'smooth');
+          if (didScroll) {
+            event.preventDefault();
+            // Keep the hash in the URL without a hard jump
+            if (history.pushState) {
+              history.pushState(null, '', url.hash);
+            } else {
+              window.location.hash = url.hash;
+            }
+          }
+        }
+
+        closeNav();
+      });
     });
+
+    // If the page loads with a hash, re-apply it with header offset.
+    if (window.location.hash) {
+      setTimeout(() => {
+        scrollToHash(window.location.hash, 'auto');
+      }, 0);
+    }
 
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 768) {
