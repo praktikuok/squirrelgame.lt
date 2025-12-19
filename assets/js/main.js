@@ -569,16 +569,28 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Apdorojama...';
 
-        // Here you can later add sending email to backend if needed.
-        await new Promise((r) => setTimeout(r, 1000));
+        try {
+          // Save email to Firestore
+          await window.sgSaveDiscountEmail(email, {
+            source: 'discount-modal',
+            context: '20EurDiscount'
+          });
 
-        form.style.display = 'none';
-        success.classList.add('active');
+          form.style.display = 'none';
+          success.classList.add('active');
+          // success text is already hardcoded in your HTML
+          setTimeout(() => {
+            overlay.classList.remove('active');
+            reset();
+          }, 3000);
 
-        setTimeout(() => {
-          overlay.classList.remove('active');
-          reset();
-        }, 2000);
+        } catch (err) {
+          // show error nicely
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Noriu nuolaidos';
+          success.textContent = 'Nepavyko išsaugoti. Bandykite dar kartą.';
+          success.classList.add('active');
+        }
       });
     });
   };

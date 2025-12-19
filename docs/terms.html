@@ -577,8 +577,13 @@
   </div>
 </div>
 
-  <script src="/assets/js/config.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <!-- Firebase SDK (compat keeps your current non-module setup working) -->
+  <script defer src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore-compat.js"></script>
+
+  <script defer src="/assets/js/firebase-config.js"></script>
+  <script defer src="/assets/js/config.js"></script>
+  <script defer src="/assets/js/main.js"></script>
 </body>
 
 </html>
