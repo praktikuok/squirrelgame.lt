@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (sessionId) {
         if (sessionId !== "12jk4h2ui7nrg") {
-          // fbq('track', 'Purchase', {value: 5.99, currency: 'EUR'});
+          fbq('track', 'Purchase', { value: 5.99, currency: 'EUR' });
           url.searchParams.set("session_id", "12jk4h2ui7nrg");
           window.history.replaceState({}, "", url.toString());
         }
