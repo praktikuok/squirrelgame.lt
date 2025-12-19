@@ -519,10 +519,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const emptyContent = document.getElementById('emptyCart')
     if (successContent && emptyContent) {
       // Check for session_id in URL parameters
-      const urlParams = new URLSearchParams(window.location.search);
-      const sessionId = urlParams.get('session_id');
+      const url = new URL(window.location.href);
+      const sessionId = url.searchParams.get("session_id");
 
       if (sessionId) {
+        if (sessionId !== "12jk4h2ui7nrg") {
+          // fbq('track', 'Purchase', {value: 5.99, currency: 'EUR'});
+          url.searchParams.set("session_id", "12jk4h2ui7nrg");
+          window.history.replaceState({}, "", url.toString());
+        }
         // Show thank you content if session_id is present
         successContent.style.display = 'block';
       } else {
