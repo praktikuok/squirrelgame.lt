@@ -416,104 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const newsletterConfig = config.newsletterModal || {};
-  const overlay = document.getElementById('newsletter-modal-overlay');
-  const floatingBtn = document.getElementById('newsletter-floating-btn');
-  const closeBtn = document.getElementById('newsletter-close-btn');
-  const newsletterForm = document.getElementById('newsletter-form');
-  let modalOpen = false;
-
-  const newsletterKeys = {
-    delay: 'newsletterModalDelayShown',
-    exit: 'newsletterModalExitShown'
-  };
-
-  const shouldTriggerAuto = (key) => {
-    const value = parseInt(safeGetStorage(key), 10);
-    return Number.isNaN(value) || (Date.now() - value) > DAY_MS;
-  };
-
-  const markAutoTrigger = (key) => {
-    safeSetStorage(key, String(Date.now()));
-  };
-
-  const openNewsletterModal = (source) => {
-    if (!overlay || overlay.classList.contains('active')) {
-      return;
-    }
-    overlay.classList.add('active');
-    overlay.setAttribute('aria-hidden', 'false');
-    modalOpen = true;
-    if (source === 'delay') {
-      markAutoTrigger(newsletterKeys.delay);
-    }
-    if (source === 'exit') {
-      markAutoTrigger(newsletterKeys.exit);
-    }
-  };
-
-  const closeNewsletterModal = () => {
-    if (!overlay) {
-      return;
-    }
-    overlay.classList.remove('active');
-    overlay.setAttribute('aria-hidden', 'true');
-    modalOpen = false;
-  };
-
-  if (floatingBtn) {
-    floatingBtn.textContent = newsletterConfig.buttonText || 'Gauti nuolaidą';
-    floatingBtn.addEventListener('click', () => openNewsletterModal('button'));
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeNewsletterModal);
-  }
-
-  if (overlay) {
-    overlay.addEventListener('click', (event) => {
-      if (event.target === overlay) {
-        closeNewsletterModal();
-      }
-    });
-  }
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeNewsletterModal();
-    }
-  });
-
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const emailInput = document.getElementById('newsletter-email');
-      const email = emailInput ? emailInput.value.trim() : '';
-      if (email) {
-        alert(`Ačiū, ${email}! Netrukus atsiųsime nuolaidos kodą.`);
-        newsletterForm.reset();
-      }
-      closeNewsletterModal();
-    });
-  }
-
-  if (newsletterConfig.enableDelay !== false) {
-    const delay = typeof newsletterConfig.delayMs === 'number' ? newsletterConfig.delayMs : 30000;
-    setTimeout(() => {
-      if (shouldTriggerAuto(newsletterKeys.delay)) {
-        openNewsletterModal('delay');
-      }
-    }, delay);
-  }
-
-  if (newsletterConfig.enableExitIntent) {
-    document.addEventListener('mouseleave', (event) => {
-      if (event.clientY <= 0 && shouldTriggerAuto(newsletterKeys.exit)) {
-        openNewsletterModal('exit');
-      }
-    });
-  }
-
   const showThanks = () => {
     const successContent = document.getElementById('thankYouContent')
     const emptyContent = document.getElementById('emptyCart')
@@ -608,4 +510,155 @@ document.addEventListener('DOMContentLoaded', () => {
       cookieBanner.style.display = 'none';
     });
   }
+
+  // =========================
+  // 20€ discount modal (simple, hardcoded)
+  // =========================
+  const initDiscountModal = () => {
+    document.querySelectorAll('[data-sg-discount]').forEach((root) => {
+      const openBtn = root.querySelector('[data-sg-discount-open]');
+      const overlay = root.querySelector('[data-sg-discount-overlay]');
+      const closeBtn = root.querySelector('[data-sg-discount-close]');
+      const form = root.querySelector('[data-sg-discount-form]');
+      const submitBtn = root.querySelector('[data-sg-discount-submit]');
+      const success = root.querySelector('[data-sg-discount-success]');
+      const emailInput = root.querySelector('input[type="email"]');
+
+      if (!openBtn || !overlay || !closeBtn || !form || !submitBtn || !success || !emailInput) return;
+
+      const open = () => overlay.classList.add('active');
+      const close = () => {
+        overlay.classList.remove('active');
+        reset();
+      };
+
+      const reset = () => {
+        form.style.display = 'flex';
+        success.classList.remove('active');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Išsaugoti 20 € nuolaidą';
+        emailInput.value = '';
+      };
+
+      openBtn.addEventListener('click', open);
+
+      // keyboard open (because openBtn is a div with role=button)
+      openBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open();
+        }
+      });
+
+      closeBtn.addEventListener('click', close);
+
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) close();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) close();
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Apdorojama...';
+
+        // Here you can later add sending email to backend if needed.
+        await new Promise((r) => setTimeout(r, 1000));
+
+        form.style.display = 'none';
+        success.classList.add('active');
+
+        setTimeout(() => {
+          overlay.classList.remove('active');
+          reset();
+        }, 2000);
+      });
+    });
+  };
+
+  // =========================
+  // Auto-open DISCOUNT modal using newsletterModal config (ONLY ONCE EVER)
+  // =========================
+  const DISCOUNT_AUTO_SHOWN_KEY = 'discountModalAutoShownOnce';
+
+  const initDiscountAutoTriggers = () => {
+    const discountConfig = config.newsletterModal || {};
+
+    // Find your discount modal elements ("as it is now")
+    const giftIcon =
+      document.getElementById('giftIcon')
+      || document.querySelector('.sg-discount .gift-icon')
+      || document.querySelector('.gift-icon');
+
+    const modalOverlay =
+      document.getElementById('modalOverlay')
+      || document.querySelector('.sg-discount .modal-overlay')
+      || document.querySelector('.modal-overlay');
+
+    if (!giftIcon || !modalOverlay) return;
+
+    const alreadyAutoShown = safeGetStorage(DISCOUNT_AUTO_SHOWN_KEY) === 'true';
+    if (alreadyAutoShown) return; // never auto-open again
+
+    const markShownOnce = () => {
+      safeSetStorage(DISCOUNT_AUTO_SHOWN_KEY, 'true');
+    };
+
+    // If user opens it manually before auto triggers — also mark it,
+    // so we won't auto-open later in the session or future visits.
+    giftIcon.addEventListener('click', () => {
+      // mark only when modal actually opens (best effort)
+      // your modal adds class "active" to overlay
+      setTimeout(() => {
+        if (modalOverlay.classList.contains('active')) {
+          markShownOnce();
+        }
+      }, 0);
+    });
+
+    const openDiscountModal = () => {
+      // re-check right before opening
+      if (safeGetStorage(DISCOUNT_AUTO_SHOWN_KEY) === 'true') return;
+      if (modalOverlay.classList.contains('active')) return;
+
+      giftIcon.click();       // reuse existing modal logic
+      markShownOnce();        // mark immediately so it won't trigger again
+      cleanup();
+    };
+
+    let delayTimerId = null;
+    const exitHandler = (event) => {
+      if (event.clientY <= 0) openDiscountModal();
+    };
+
+    const cleanup = () => {
+      if (delayTimerId) {
+        clearTimeout(delayTimerId);
+        delayTimerId = null;
+      }
+      document.removeEventListener('mouseleave', exitHandler);
+    };
+
+    // Delay trigger
+    if (discountConfig.enableDelay !== false) {
+      const delay = typeof discountConfig.delayMs === 'number' ? discountConfig.delayMs : 30000;
+      delayTimerId = setTimeout(openDiscountModal, delay);
+    }
+
+    // Exit intent trigger
+    if (discountConfig.enableExitIntent) {
+      document.addEventListener('mouseleave', exitHandler);
+    }
+  };
+
+  initDiscountAutoTriggers();
+  initDiscountModal();
+
 });

@@ -1,0 +1,48 @@
+{%- comment -%}
+Usage:
+{% include discount_modal.html id="discount" %}
+{%- endcomment -%}
+
+{%- assign uid = include.id | default: "discount" -%}
+
+<div class="sg-discount" data-sg-discount>
+  <!-- Corner button (always visible) -->
+  <div class="gift-icon" data-sg-discount-open aria-label="Atidaryti nuolaidos langą" role="button" tabindex="0">
+    <i class="fas fa-gift" aria-hidden="true"></i>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" data-sg-discount-overlay aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="discountTitle-{{ uid }}">
+      <button class="close-btn" data-sg-discount-close aria-label="Uždaryti">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+
+      <h2 class="modal-title" id="discountTitle-{{ uid }}">Gauk dovanų!</h2>
+
+      <div class="prize-reveal">
+        <div class="prize-icon"><i class="fas fa-gifts" aria-hidden="true"></i></div>
+
+        <div class="prize-name">Nuolaida - 20 €</div>
+        <p class="text-center text-muted mb-4">Prenumeruok naujienlaiškį ir gauk nuolaidą</p>
+
+        <form class="email-form" data-sg-discount-form>
+          <label for="discountEmail-{{ uid }}" style="color:#357266;font-weight:bold;">
+            Įveskite savo el. paštą:
+          </label>
+
+          <input type="email" id="discountEmail-{{ uid }}" class="email-input" placeholder="jusu@pastas.lt" required
+            aria-label="El. pašto adresas" autocomplete="email">
+
+          <button type="submit" class="claim-btn" data-sg-discount-submit>
+            Noriu nuolaidos
+          </button>
+        </form>
+
+        <div class="success-message" data-sg-discount-success>
+          Ačiū! 20 € nuolaidos kodą atsiųsime el. paštu.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
