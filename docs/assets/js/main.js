@@ -237,15 +237,15 @@ document.addEventListener('DOMContentLoaded', () => {
     container.innerHTML = '';
     faqEntries.forEach((item) => {
       const wrapper = document.createElement('div');
-      wrapper.className = 'border border-gray-300 rounded-lg';
+      wrapper.className = 'border border-gray-300 rounded-lg overflow-hidden bg-light';
 
       const button = document.createElement('button');
       button.type = 'button';
-      button.className = 'w-full text-left px-6 py-4 bg-light transition flex justify-between items-center faq-toggle';
+      button.className = 'w-full text-left px-6 py-4 transition flex justify-between items-center faq-toggle';
       button.innerHTML = `<span class="font-semibold text-primary">${item.question || ''}</span><i class="fas fa-chevron-down text-primary transition-transform faq-icon"></i>`;
 
       const answer = document.createElement('div');
-      answer.className = 'px-6 py-4 text-gray-700 hidden faq-content';
+      answer.className = 'px-6 py-4 text-gray-700 hidden faq-content bg-white';
       answer.textContent = item.answer || '';
 
       button.addEventListener('click', () => {
@@ -514,6 +514,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const showThanks = () => {
+    const successContent = document.getElementById('thankYouContent')
+    const emptyContent = document.getElementById('emptyCart')
+    if (successContent && emptyContent) {
+      // Check for session_id in URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const sessionId = urlParams.get('session_id');
+
+      if (sessionId) {
+        // Show thank you content if session_id is present
+        successContent.style.display = 'block';
+      } else {
+        // Show empty cart message by default
+        emptyContent.style.display = 'block';
+      }
+    }
+  };
+
+  showThanks();
   updatePrices();
   renderLeaderboard();
   renderTestimonials();
