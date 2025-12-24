@@ -16,7 +16,7 @@
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4 w-full relative">
     <div class="flex-1 flex justify-start">
       <a href="/" class="site-logo flex items-center justify-center">
-        <img src="assets/img/squirrel-game-logo-text.svg" alt="Squirrel Game logotipas">
+        <img src="/assets/img/squirrel-game-logo-text.svg" alt="Squirrel Game logotipas">
       </a>
     </div>
     <button id="nav-toggle" type="button" class="nav-toggle md:hidden" aria-controls="site-nav" aria-expanded="false"
@@ -478,7 +478,7 @@
 
   <footer class="bg-primary text-white py-12 px-4">
   <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-8 mb-8">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
       <div>
         <h4 class="font-bold text-xl mb-4">Squirrel Game</h4>
         <p class="text-sm opacity-90">Galvosūkių žaidimas lauke, kuris paverčia tavo komandą tikrais miesto
@@ -505,6 +505,17 @@
           <li>
             <a href="/terms.html" class="hover:opacity-100 transition-opacity footer-link" id="terms-conditions-link">
               Taisyklės ir sąlygos
+            </a>
+          </li>
+        </ul>
+
+      </div>
+      <div>
+        <h4 class="font-bold text-xl mb-4">Pramogos</h4>
+        <ul class="space-y-2 text-sm opacity-90">
+          <li>
+            <a href="/events/hike.html" class="hover:opacity-100 transition-opacity footer-link" id="hikes-link">
+               Žygiai
             </a>
           </li>
         </ul>
@@ -553,7 +564,7 @@
       <div class="prize-reveal">
         <div class="prize-icon"><i class="fas fa-gifts" aria-hidden="true"></i></div>
 
-        <div class="prize-name">Nuolaida - 20 €</div>
+        <div class="prize-name">Nuolaida - 20 %</div>
         <p class="text-center text-muted mb-4">Prenumeruok naujienlaiškį ir gauk nuolaidą</p>
 
         <form class="email-form" data-sg-discount-form>
@@ -570,7 +581,7 @@
         </form>
 
         <div class="success-message" data-sg-discount-success>
-          Ačiū! 20 € nuolaidos kodą atsiųsime el. paštu.
+          Ačiū! 20 % nuolaidos kodą atsiųsime el. paštu.
         </div>
       </div>
     </div>
@@ -584,6 +595,27 @@
   <script defer src="/assets/js/firebase-config.js"></script>
   <script defer src="/assets/js/config.js"></script>
   <script defer src="/assets/js/main.js"></script>
+
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1500544594819333');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1500544594819333&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
 </body>
 
 </html>

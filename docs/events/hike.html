@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Kaip vyksta žaidimas – SquirrelGame.lt</title>
+  <title>Išskirtinis žygis drąsiausiems – SquirrelGame.lt</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <script src="/assets/js/tailwind-3-4-17.js"></script>
@@ -36,87 +36,158 @@
 </header>
 
   <main class="w-full">
-    <section class="py-16 px-4 bg-light">
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-4xl font-bold text-primary mb-6">Kaip dalyvauti?</h1>
+    <section class="py-16 px-4 bg-light premium-hero-section">
+  <div id="app" class="w-full relative z-10">
 
-    <p class="text-gray-700 mb-8">
-      „Squirrel Game“ – tai Miesto nuotykių žaidimas, kuriame judėsite po miestą pėsčiomis ir spręsite
-      užduotis telefono pagalba, kol įveiksite visą maršrutą.
-    </p>
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="space-y-6">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-neutral text-primary">
+            <span id="spots-remaining">Vietų skaičius ribotas</span>
+          </div>
 
-    <div class="space-y-8">
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-xl font-semibold text-primary mb-4">1) Bilietas ir starto nuorodos</h2>
-        <ol class="list-decimal pl-5 space-y-2 text-gray-700">
-          <li><span class="font-medium">Įsigykite bilietą.</span></li>
-          <li>
-            <span class="font-medium">Po apmokėjimo per 24 val.</span> el. paštu gausite nuorodą laiko pasirinkimui
-            (patikrinkite ir „Spam“ / „Reklamos“ aplanką).
-          </li>
-          <li>
-            <span class="font-medium">Pasirinkę jums tinkamą laiką</span>, gausite nuorodą su <span
-              class="font-medium">starto vieta</span>,
-            kurioje pradėsite žaidimą.
-          </li>
-        </ol>
-      </div>
+          <h1 id="hero-title" class="text-4xl md:text-5xl font-bold text-primary leading-tight">
+            Išskirtinio pasivaikščiojimo patirtis
+          </h1>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-xl font-semibold text-primary mb-4">2) Pasiruošimas (reikalavimai)</h2>
-        <ul class="list-decimal pl-5 space-y-2 text-gray-700">
-          <li><span class="font-medium">Nevėluokite</span> – atvykite į starto vietą pasirinktu laiku.</li>
-          <li><span class="font-medium">Turėkite pakrautą telefoną</span> (rekomenduojame ir powerbanką).</li>
-          <li><span class="font-medium">Reikalingas interneto ryšys</span> viso žaidimo metu.</li>
-          <li>Dėvėkite <span class="font-medium">patogius drabužius bei avalynę</span>, atitinkančius <span
-              class="font-medium">oro sąlygas</span>.</li>
-        </ul>
-      </div>
+          <div class="space-y-3 text-gray-700">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-dark-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span id="event-date" class="font-medium">Šeštadienis, sausio 24 d., 2026</span>
+            </div>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-xl font-semibold text-primary mb-4">3) Registracija ir komanda</h2>
-        <ul class="list-decimal pl-5 space-y-2 text-gray-700">
-          <li>Prieš pradedant žaisti <span class="font-medium">visi dalyviai turi užsiregistruoti</span>.</li>
-          <li>
-            <span class="font-medium">Visi komandos nariai įtraukiami į žaidimą</span> ir gali gauti
-            <span class="font-medium">skirtingas užduoties dalis</span>, todėl svarbu bendrauti ir veikti komandiškai.
-          </li>
-        </ul>
-      </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-dark-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
+                </path>
+              </svg>
+              <span id="event-location">Arkikatedros aikštė, Vilnius</span>
+            </div>
+          </div>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-xl font-semibold text-primary mb-4">4) Žaidimo eiga</h2>
-        <ul class="list-decimal pl-5 space-y-2 text-gray-700">
-          <li>
-            Užsiregistravę ir atvykę į nurodytą vietą pasirinktu laiku, gausite <span class="font-medium">pirmąją
-              užduotį</span>.
-          </li>
-          <li>Išsprendę užduotį, gausite <span class="font-medium">sekančią</span> – taip tęsis, kol įveiksite visą
-            žaidimą.</li>
-          <li>Žaidimo metu <span class="font-medium">reikės judėti po miestą</span>, visos vietos yra <span
-              class="font-medium">pasiekiamos pėsčiomis</span>.</li>
-        </ul>
+          <p id="description" class="leading-relaxed text-gray-700">
+            Prisijunkite prie kruopščiai suplanuotos žiemos pasivaikščiojimo patirties gražiausiose Vilniaus vietose.
+            Eidami įveiksite užduotis, susipažinsite ir subursite komandą be jokio dirbtinio „networkingo“. Maža grupė,
+            aiški
+            eiga ir kokybiškas laikas su įdomiai žmonėmis.
+            Skirta nebijantiems žiemiško oro ir ieškantiems daugiau nei eilinio žygio.
+          </p>
 
-        <div class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4">
-          <p class="text-sm text-amber-900">
-            <span class="font-semibold">Dėmesio dėl prieinamumo:</span> kai kuriose vietose gali būti
-            <span class="font-medium">laiptų</span> ar kitų kliūčių, todėl judėjimo negalią turintiems asmenims
-            žaidimas gali būti sunkiau pritaikomas.
+          <div class="flex items-start gap-2 pt-2 text-gray-700">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-sm">Suplanuotas maršrutas • Įdomios užduotys • Naujos pažintys</span>
+          </div>
+        </div>
+
+        <div id="form-card" class="general-card">
+          <h2 id="form-title" class="text-2xl font-bold text-primary mb-2">
+            Užsitikrinkite vietą
+          </h2>
+          <p id="form-subtitle" class="text-gray-700 mb-6">
+            Ribotas kiekis vietų. Registruokitės dabar, kad prisijungtumėte prie šios išskirtinės patirties.
+          </p>
+
+          <form id="hike-email-form" class="space-y-4">
+            <div>
+              <label id="email-label" for="email-input" class="block font-medium text-gray-700 mb-2">
+                El. pašto adresas
+              </label>
+              <input type="email" id="email-input" required placeholder="jusu@pastas.lt"
+                class="w-full px-4 py-3 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-emerald-100 transition-all" />
+            </div>
+
+            <button type="submit" id="submit-button" class="select-button button-primary w-full">
+              Rezervuoti vietą
+            </button>
+
+            <div id="success-message"
+              class="hidden p-4 rounded-lg text-center font-medium bg-emerald-50 text-dark-green">
+            </div>
+            <div id="error-message" class="hidden p-4 rounded-lg text-center font-medium bg-red-50 text-red-700"></div>
+          </form>
+
+          <p class="text-xs text-center text-gray-500 mt-6">
+            Užsiregistruodami sutinkate gauti SquirrelGame.lt naujienas el. paštu.
           </p>
         </div>
       </div>
-
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-xl font-semibold text-primary mb-3">Svarbu</h2>
-        <p class="text-gray-700">
-          Dalyvaudami sutinkate laikytis <a href="/terms"><span class="font-medium underline">Taisyklių ir
-              sąlygų</span></a>.
-          Išsami informacija pateikiama puslapyje.
-        </p>
-      </div>
     </div>
+
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('hike-email-form');
+    const emailInput = document.getElementById('email-input');
+    const submitButton = document.getElementById('submit-button');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+
+    if (!form || !emailInput || !submitButton || !successMessage || !errorMessage) {
+      return;
+    }
+
+    const initialButtonText = submitButton.textContent;
+
+    const showMessage = (el, text) => {
+      el.textContent = text;
+      el.classList.remove('hidden');
+    };
+
+    const hideMessage = (el) => {
+      el.textContent = '';
+      el.classList.add('hidden');
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const email = emailInput.value.trim();
+      hideMessage(successMessage);
+      hideMessage(errorMessage);
+
+      if (!email || !email.includes('@')) {
+        showMessage(errorMessage, 'Prašome įvesti teisingą el. pašto adresą.');
+        return;
+      }
+
+      if (typeof window.sgSaveDiscountEmail !== 'function') {
+        showMessage(errorMessage, 'Registracija laikinai nepasiekiama. Bandykite vėliau.');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Apdorojama...';
+
+      try {
+        await window.sgSaveDiscountEmail(email, {
+          source: 'hike-page',
+          context: 'register-hike-1'
+        });
+
+        emailInput.value = '';
+        showMessage(successMessage, '🎉 Ačiū! Visą informaciją atsiųsime el. paštu.');
+      } catch (err) {
+        showMessage(errorMessage, 'Registracija nepavyko. Bandykite dar kartą.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = initialButtonText;
+      }
+    });
+  });
+</script>
   </main>
 
   <footer class="bg-primary text-white py-12 px-4">

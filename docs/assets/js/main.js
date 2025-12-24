@@ -479,7 +479,8 @@ document.addEventListener('DOMContentLoaded', () => {
       { selector: '#footer-home-link', paths: ['/', '/index.html'] },
       { selector: '#game-rules-link', paths: ['/game-rules', '/game-rules.html'] },
       { selector: '#cookies-policy-link', paths: ['/cookies', '/cookies.html'] },
-      { selector: '#terms-conditions-link', paths: ['/terms', '/terms.html'] }
+      { selector: '#terms-conditions-link', paths: ['/terms', '/terms.html'] },
+      { selector: '#hikes-link', paths: ['/events/hike', '/events/hike.html'] }
     ];
 
     const allFooterLinks = document.querySelectorAll('.footer-link');
@@ -536,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
         form.style.display = 'flex';
         success.classList.remove('active');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Išsaugoti 20 € nuolaidą';
+        submitBtn.textContent = 'Išsaugoti nuolaidą';
         emailInput.value = '';
       };
 
@@ -573,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Save email to Firestore
           await window.sgSaveDiscountEmail(email, {
             source: 'discount-modal',
-            context: '20EurDiscount'
+            context: '20PercentDiscount'
           });
 
           form.style.display = 'none';
